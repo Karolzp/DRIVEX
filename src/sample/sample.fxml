@@ -1,12 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Group?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 
 <Pane fx:id="MainStage" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #32cd32;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <Line endY="300.0" layoutX="677.0" layoutY="410.0" strokeWidth="30.0" />
-      <Line endY="300.0" layoutX="705.0" layoutY="410.0" strokeWidth="30.0" />
-      <Line endY="220.0" layoutX="691.0" layoutY="500.0" startY="-100.0" stroke="#f2f2f2" strokeDashOffset="10.0" strokeWidth="2.0" style="-fx-stroke-dash-array: 10;" />
+      <Group layoutX="717.0" layoutY="420.0">
+         <children>
+            <Line endY="300.0" strokeLineCap="BUTT" strokeWidth="30.0" />
+            <Line endY="300.0" layoutX="28.0" strokeLineCap="BUTT" strokeWidth="30.0" />
+            <Line endY="300.0" layoutX="14.0" stroke="#f2f2f2" strokeDashOffset="10.0" strokeWidth="2.0" style="-fx-stroke-dash-array: 10;" />
+         </children>
+      </Group>
+      <Group layoutX="635.0" layoutY="420.0">
+         <children>
+            <Line endY="300.0" strokeLineCap="BUTT" strokeWidth="30.0" />
+            <Line endY="300.0" layoutX="28.0" strokeLineCap="BUTT" strokeWidth="30.0" />
+            <Line endY="300.0" layoutX="14.0" stroke="#f2f2f2" strokeDashOffset="10.0" strokeWidth="2.0" style="-fx-stroke-dash-array: 10;" />
+         </children>
+      </Group>
+      <Group layoutX="635.0" layoutY="-9.0">
+         <children>
+            <Line endY="300.0" strokeLineCap="BUTT" strokeWidth="30.0" />
+            <Line endY="300.0" layoutX="28.0" strokeLineCap="BUTT" strokeWidth="30.0" />
+            <Line endY="300.0" layoutX="14.0" stroke="#f2f2f2" strokeDashOffset="10.0" strokeWidth="2.0" style="-fx-stroke-dash-array: 10;" />
+         </children>
+      </Group>
+      <Group layoutX="717.0" layoutY="-9.0">
+         <children>
+            <Line endY="300.0" strokeLineCap="BUTT" strokeWidth="30.0" />
+            <Line endY="300.0" layoutX="28.0" strokeLineCap="BUTT" strokeWidth="30.0" />
+            <Line endY="300.0" layoutX="14.0" stroke="#f2f2f2" strokeDashOffset="10.0" strokeWidth="2.0" style="-fx-stroke-dash-array: 10;" />
+         </children>
+      </Group>
+      <Group layoutX="320.0" layoutY="305.0">
+         <children>
+            <Line endX="300.0" strokeLineCap="BUTT" strokeWidth="30.0" />
+            <Line endX="300.0" layoutY="28.0" strokeLineCap="BUTT" strokeWidth="30.0" />
+            <Line endX="300.0" layoutY="14.0" stroke="#f2f2f2" strokeDashOffset="10.0" strokeWidth="2.0" style="-fx-stroke-dash-array: 10;" />
+         </children>
+      </Group>
+      <Group layoutX="320.0" layoutY="378.0">
+         <children>
+            <Line endX="300.0" strokeLineCap="BUTT" strokeWidth="30.0" />
+            <Line endX="300.0" layoutY="28.0" strokeLineCap="BUTT" strokeWidth="30.0" />
+            <Line endX="300.0" layoutY="14.0" stroke="#f2f2f2" strokeDashOffset="10.0" strokeWidth="2.0" style="-fx-stroke-dash-array: 10;" />
+         </children>
+      </Group>
+      <Group layoutX="761.0" layoutY="305.0">
+         <children>
+            <Line endX="300.0" strokeLineCap="BUTT" strokeWidth="30.0" />
+            <Line endX="300.0" layoutY="28.0" strokeLineCap="BUTT" strokeWidth="30.0" />
+            <Line endX="300.0" layoutY="14.0" stroke="#f2f2f2" strokeDashOffset="10.0" strokeWidth="2.0" style="-fx-stroke-dash-array: 10;" />
+         </children>
+      </Group>
+      <Group layoutX="761.0" layoutY="378.0">
+         <children>
+            <Line endX="300.0" strokeLineCap="BUTT" strokeWidth="30.0" />
+            <Line endX="300.0" layoutY="28.0" strokeLineCap="BUTT" strokeWidth="30.0" />
+            <Line endX="300.0" layoutY="14.0" stroke="#f2f2f2" strokeDashOffset="10.0" strokeWidth="2.0" style="-fx-stroke-dash-array: 10;" />
+         </children>
+      </Group>
    </children>
 </Pane>
