@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
 
 <Pane fx:id="MainStage" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #32cd32;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-    <children>
-    </children>
+   <children>
+      <Line endY="300.0" layoutX="677.0" layoutY="410.0" strokeWidth="30.0" />
+      <Line endY="300.0" layoutX="705.0" layoutY="410.0" strokeWidth="30.0" />
+      <Line endY="220.0" layoutX="691.0" layoutY="500.0" startY="-100.0" stroke="#f2f2f2" strokeDashOffset="10.0" strokeWidth="2.0" style="-fx-stroke-dash-array: 10;" />
+   </children>
 </Pane>
