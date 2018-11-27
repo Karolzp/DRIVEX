@@ -7,6 +7,7 @@ import java.util.HashMap;
 public class RoadController {
 
     List<HashMap> listOfRoadModels;
+    List<HashMap> listOfRoadViews;
 
 
     public void createRoadModel(HashMap<String, Integer> spawnpoint, HashMap<String, Integer> endpoint, HashMap<String, Integer> trafficLightsPoint, String name) {
@@ -17,6 +18,8 @@ public class RoadController {
     }
 
     private void createRoadView(){
-
+        for (int i = 0; listOfRoadModels.size() < ; i++) {
+            RoadView
+        }
     }
 }

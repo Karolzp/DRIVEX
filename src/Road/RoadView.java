@@ -1,16 +1,32 @@
 package Road;
 
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
-
-import java.util.HashMap;
+import sample.Controller;
 
 public class RoadView {
     private final int roadWidth = 40;
     private Line graphicalRepresentationOfRoad;
+    private final Color roadColor = Color.DIMGRAY;
 
-    public RoadView(HashMap<String, Integer> spawnPoint, HashMap<String, Integer> endPoint){
-//        TODO
-//        it will call the crrwteList method
+
+    public RoadView(Line graphicalRepresentationOfRoad) {
+        this.graphicalRepresentationOfRoad = graphicalRepresentationOfRoad;
+        this.setFill();
+        this.setWidth();
+        this.addToScene();
+    }
+
+    private void setWidth(){
+        this.graphicalRepresentationOfRoad.setStrokeWidth(roadWidth);
+    }
+
+    private void setFill() {
+        this.graphicalRepresentationOfRoad.setFill(roadColor);
+    }
+
+    private void addToScene(){
+        Controller.StaticMainStage.getChildren().add(this.graphicalRepresentationOfRoad);
     }
 
 }
