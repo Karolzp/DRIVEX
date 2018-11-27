@@ -13,13 +13,4 @@ public class RoadView {
 //        it will call the crrwteList method
     }
 
-
-
-    private createLine (HashMap<String, Integer> spawnPoint, HashMap<String, Integer> endPoint) {
-        Line line = new Line();
-        line.setStartX(spawnPoint.get("x"));
-        line.setStartY(spawnPoint.get("y"));
-        line.setEndX(endPoint.get("x"));
-        line.setEndX(endPoint.get("y"));
-    }
 }
