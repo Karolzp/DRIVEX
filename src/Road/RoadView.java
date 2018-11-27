@@ -10,7 +10,7 @@ public class RoadView {
     private final Color roadColor = Color.DIMGRAY;
 
 
-    public RoadView(Line graphicalRepresentationOfRoad) {
+    public void handleRoadView(Line graphicalRepresentationOfRoad) {
         this.graphicalRepresentationOfRoad = graphicalRepresentationOfRoad;
         this.setFill();
         this.setWidth();

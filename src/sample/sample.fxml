@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Point3D?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
 
-<Pane fx:id="MainStage" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #32cd32;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller" />
+<Pane fx:id="MainStage" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #32cd32;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <Line depthTest="ENABLE" endX="1000.0" layoutY="370.0" stroke="WHITE" style="-fx-stroke-dash-array: 10;" scaleZ="-20.0">
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
+      </Line>
+   </children>
+</Pane>

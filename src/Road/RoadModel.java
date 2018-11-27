@@ -55,6 +55,6 @@ public class RoadModel {
         roadLine.setStartX(spawnpoint.get("x"));
         roadLine.setStartY(spawnpoint.get("y"));
         roadLine.setEndX(endpoint.get("x"));
-        roadLine.setEndX(endpoint.get("y"));
+        roadLine.setEndY(endpoint.get("y"));
     }
 }
