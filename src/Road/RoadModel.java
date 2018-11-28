@@ -53,8 +53,6 @@ public class RoadModel {
     }
 
 
-
-
     /**
      creates roadLine. Starting point is spawnPoint X and Y. Ending point is endPoint X and Y.
      * @param spawnPoint
@@ -66,7 +64,5 @@ public class RoadModel {
         roadLine.setStartY(spawnPoint.get("y"));
         roadLine.setEndX(endPoint.get("x"));
         roadLine.setEndY(endPoint.get("y"));
-
     }
-
 }

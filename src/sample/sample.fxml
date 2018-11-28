@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.geometry.Point3D?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
 
 
 <Pane fx:id="MainStage" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #32cd32;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">

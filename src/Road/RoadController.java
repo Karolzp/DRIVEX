@@ -8,11 +8,8 @@ import java.util.List;
 
 
 public class RoadController {
-
     protected List<RoadModel> listOfRoadModel = new ArrayList<RoadModel>();
-
-    protected List<Object> listOfGraphicalRepresentationOfRoad;
-
+    protected List<Line> listOfGraphicalRepresentationOfRoad = new ArrayList<javafx.scene.shape.Line>();
 
 
     /**
@@ -43,5 +40,4 @@ public class RoadController {
             System.out.println(listOfGraphicalRepresentationOfRoad);
         }
     }
-
 }

@@ -18,13 +18,14 @@ public class Controller implements Initializable {
         StaticMainStage = this.MainStage;
         createRoadController();
         createRoadModels();
-
     }
+
 
     public void createRoadController() {
         RoadController roadController = new RoadController();
         this.roadController = roadController;
     }
+
 
     private void createRoadModels(){
         HashMap<String, Integer> spawnPointKAROLEK = new HashMap<>();
@@ -59,8 +60,5 @@ public class Controller implements Initializable {
         roadController.createRoadModel(spawnPointJARO, endPointJARO, trafficLightStopPointJARO, "JARO");
 
         roadController.createRoadView();
-
     }
-
-
 }
