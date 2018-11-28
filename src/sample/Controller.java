@@ -1,6 +1,7 @@
 package sample;
 
 import Road.*;
+import Vehicule.CarController;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.Pane;
 import java.net.URL;
@@ -11,6 +12,8 @@ public class Controller implements Initializable {
     public Pane MainStage;
     public static Pane StaticMainStage;
     private RoadController roadController;
+    private CarController carController;
+
 
 
     @Override
@@ -18,7 +21,10 @@ public class Controller implements Initializable {
         StaticMainStage = this.MainStage;
         createRoadController();
         createRoadModels();
+        createCarController();
+        createCarModels();
     }
+
 
 
     public void createRoadController() {
@@ -61,4 +67,17 @@ public class Controller implements Initializable {
 
         roadController.createRoadView();
     }
+
+    public void createCarController(){
+        CarController carController = new CarController();
+        this.carController = carController;
+    }
+
+    private void createCarModels(){
+        carController.createCarModel(10, 920, 90, 35, 20, "car1", "normal");
+        carController.createCarModel(10, 50, 132, 35, 20, "car1", "normal");
+        carController.createCarView();
+
+    }
+
 }
