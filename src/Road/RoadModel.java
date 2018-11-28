@@ -1,38 +1,72 @@
 package Road;
 
+import Vehicule.Vehicule;
+import javafx.scene.shape.Line;
 import java.util.HashMap;
 import java.util.List;
 
 public class RoadModel {
-    private List <Vehicule> CarsOnRoad;
-    private final HashMap<String, Integer> SPAWNPOINT;
-    private final HashMap<String, Integer> ENDPOINT;
-    private final HashMap<String, Integer> TRAFFICLIGHTSSTOPPOINT;
+    private String roadName;
+    private List <Vehicule> carsOnRoad;
+    private HashMap<String, Integer> spawnPoint;
+    private HashMap<String, Integer> endPoint;
+    private HashMap<String, Integer> trafficLightStopPoint;
+    private Line roadLine;
 
 
-    public RoadModel(HashMap<String, Integer> SPAWNPOINT, HashMap<String, Integer> ENDPOINT, HashMap<String, Integer> TRAFFICLIGHTSSTOPPOINT) {
-        this.SPAWNPOINT = SPAWNPOINT;
-        this.ENDPOINT = ENDPOINT;
-        this.TRAFFICLIGHTSSTOPPOINT = TRAFFICLIGHTSSTOPPOINT;
+/* constructor */
+    public RoadModel(HashMap<String, Integer> spawnPoint, HashMap<String, Integer> endPoint, HashMap<String, Integer> trafficLightStopPoint, String roadName) {
+        this.roadName = roadName;
+        this.spawnPoint = spawnPoint;
+        this.endPoint = endPoint;
+        this.trafficLightStopPoint = trafficLightStopPoint;
+        this.createRoadLine(spawnPoint, endPoint);
+    }
+
+
+    public String getRoadName() {
+        return roadName;
     }
 
     public void setCarsOnRoad(List<Vehicule> carsOnRoad) {
-        CarsOnRoad = carsOnRoad;
+        this.carsOnRoad = carsOnRoad;
     }
 
     public List<Vehicule> getCarsOnRoad() {
-        return CarsOnRoad;
+        return carsOnRoad;
     }
 
-    public HashMap<String, Integer> getSPAWNPOINT() {
-        return SPAWNPOINT;
+    public HashMap<String, Integer> getSpawnPoint() {
+        return spawnPoint;
     }
 
-    public HashMap<String, Integer> getENDPOINT() {
-        return ENDPOINT;
+    public HashMap<String, Integer> getEndPoint() {
+        return endPoint;
     }
 
-    public HashMap<String, Integer> getTRAFFICLIGHTSSTOPPOINT() {
-        return TRAFFICLIGHTSSTOPPOINT;
+    public HashMap<String, Integer> getTrafficLightStopPoint() {
+        return trafficLightStopPoint;
     }
+
+    public Line getRoadLine() {
+        return roadLine;
+    }
+
+
+
+
+    /**
+     creates roadLine. Starting point is spawnPoint X and Y. Ending point is endPoint X and Y.
+     * @param spawnPoint
+     * @param endPoint
+     */
+    private void createRoadLine (HashMap<String, Integer> spawnPoint, HashMap<String, Integer> endPoint) {
+        this.roadLine = new Line();
+        roadLine.setStartX(spawnPoint.get("x"));
+        roadLine.setStartY(spawnPoint.get("y"));
+        roadLine.setEndX(endPoint.get("x"));
+        roadLine.setEndY(endPoint.get("y"));
+
+    }
+
 }
