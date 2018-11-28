@@ -36,8 +36,7 @@ public class RoadController {
       RoadView roadView = new RoadView();
         for (int i = 0; i < listOfRoadModel.size(); i++){
            roadView.setGraphicalRepresentationOfRoad(listOfRoadModel.get(i).getRoadLine());
-//           this.listOfGraphicalRepresentationOfRoad.add(roadView.getGraphicalRepresentationOfRoad());
-            System.out.println(listOfGraphicalRepresentationOfRoad);
+           this.listOfGraphicalRepresentationOfRoad.add(roadView.getGraphicalRepresentationOfRoad());
         }
     }
 }
