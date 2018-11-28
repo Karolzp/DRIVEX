@@ -1,5 +1,7 @@
 package Vehicule;
 
+import Road.RoadController;
+import Road.RoadModel;
 import javafx.scene.shape.Rectangle;
 
 public class CarModel extends Vehicule {
@@ -26,14 +28,26 @@ public class CarModel extends Vehicule {
     }
 
     @Override
-    protected void moveLeft() {
-//TODO
+    protected void moveLeft(int actualPositionX, int endPointX){
+        if (actualPositionX >= endPointX) {
+            positionX = actualPositionX - 5;
+            System.out.println("moving left, position x  =  " + positionX);
+        } else {
+            System.out.println("car reached the LEFT END point and stopped"); }
     }
 
+
     @Override
-    protected void moveRight() {
-//TODO
+    protected void moveRight(int actualPositionX, int endPointX) {
+        if (actualPositionX <= endPointX) {
+            positionX = actualPositionX + 5;
+            System.out.println("moving Right, position x  =  " + positionX);
+        } else {
+            System.out.println("car reached the RIGHT END point and stopped");
+        }
     }
+
+
 
     /* constructor */
     public CarModel(int speedMax, int positionX, int positionY, int widthOfCar, int heightOfCar, String carName, String carType) {

@@ -23,11 +23,24 @@ public class Controller implements Initializable {
         createRoadModels();
         createCarController();
         createCarModels();
+        moveCarLeft();
+    }
+
+    private void moveCarRight() {
+//        int actualPositionX = carController.getListOFCarModel().get(0).getPositionX();
+//        car
+    }
+
+    public void moveCarLeft(){
+        for(int i = 0; i < 100; i++) {
+            int actualPositionX = carController.getListOFCarModel().get(0).getPositionX();
+            int endPointX = roadController.getListOfRoadModel().get(0).getEndPoint().get("x");
+            carController.moveLeft(actualPositionX, endPointX);
+        }
     }
 
 
-
-    public void createRoadController() {
+    private void createRoadController() {
         RoadController roadController = new RoadController();
         this.roadController = roadController;
     }
@@ -68,14 +81,14 @@ public class Controller implements Initializable {
         roadController.createRoadView();
     }
 
-    public void createCarController(){
+    private void createCarController(){
         CarController carController = new CarController();
         this.carController = carController;
     }
 
     private void createCarModels(){
         carController.createCarModel(10, 920, 90, 35, 20, "car1", "normal");
-        carController.createCarModel(10, 50, 132, 35, 20, "car1", "normal");
+        carController.createCarModel(10, 50, 132, 35, 20, "car2", "normal");
         carController.createCarView();
 
     }
