@@ -15,6 +15,10 @@ public class RoadController {
         createRoadModels();
     }
 
+    public List<RoadModel> getListOfRoadModel() {
+        return listOfRoadModel;
+    }
+
     /**
      * creates roadModel based on the given attributes...
      * ...and then...

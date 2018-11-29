@@ -1,5 +1,6 @@
 package Road;
 
+import Lights.LightsModel;
 import Vehicule.Vehicule;
 import javafx.scene.shape.Line;
 import java.util.HashMap;
@@ -12,6 +13,7 @@ public class RoadModel {
     private HashMap<String, Integer> endPoint;
     private HashMap<String, Integer> trafficLightStopPoint;
     private Line roadLine;
+    private LightsModel trafficlights;
 
 
 /* constructor */
@@ -52,6 +54,9 @@ public class RoadModel {
         return roadLine;
     }
 
+    public void setTrafficlights(LightsModel trafficlights) {
+        this.trafficlights = trafficlights;
+    }
 
     /**
      creates roadLine. Starting point is spawnPoint X and Y. Ending point is endPoint X and Y.

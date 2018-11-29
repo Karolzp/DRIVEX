@@ -29,7 +29,7 @@ public class Controller implements Initializable {
     }
 
     public void createTrafficLightsController(){
-        LightsController lightsController = new LightsController();
+        LightsController lightsController = new LightsController(roadController.getListOfRoadModel());
         this.lightsController = lightsController;
     }
 

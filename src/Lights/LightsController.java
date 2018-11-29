@@ -9,8 +9,8 @@ import java.util.List;
 public class LightsController {
     List<LightsModel> listOfLights = new ArrayList();
 
-    public LightsController() {
-        createTrafficLights();
+    public LightsController(List<RoadModel> listOfRoadModel) {
+        createTrafficLights(listOfRoadModel);
     }
 
     private void createTrafficLightsModels(HashMap<String,Integer> positionOfTrafficLightBox){
@@ -26,14 +26,18 @@ public class LightsController {
         }
     }
 
-    private void createTrafficLights(){
-        HashMap<String,Integer> downLights = new HashMap<>();
-        downLights.put("x", 500 );
-        downLights.put("y", 400);
-        downLights.put("h", 30);
-        downLights.put("w", 16);
+    private void createTrafficLights(List<RoadModel> listOfRoadModel){
 
-        createTrafficLightsModels(downLights);
+        for (int i = 0; i < listOfRoadModel.size(); i++) {
+            HashMap<String, Integer> downLights = new HashMap<>();
+            downLights.put("x", listOfRoadModel.get(i).getTrafficLightStopPoint().get("x")-8);
+            downLights.put("y", listOfRoadModel.get(i).getTrafficLightStopPoint().get("y")-15);
+            downLights.put("h", 30);
+            downLights.put("w", 16);
+
+            createTrafficLightsModels(downLights);
+        }
+
         createTrafficLightsView();
     }
 }
