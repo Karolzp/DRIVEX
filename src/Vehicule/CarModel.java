@@ -27,26 +27,31 @@ public class CarModel extends Vehicule {
 //TODO
     }
 
-    @Override
-    protected void moveLeft(int actualPositionX, int endPointX){
-        if (actualPositionX >= endPointX) {
-            positionX = actualPositionX - 5;
-            System.out.println("moving left, position x  =  " + positionX);
-        } else {
-            System.out.println("car reached the LEFT END point and stopped"); }
-    }
 
-
+    /**
+     * decreases the actual x position by value of speed. So car moves to the left
+     */
     @Override
-    protected void moveRight(int actualPositionX, int endPointX) {
-        if (actualPositionX <= endPointX) {
-            positionX = actualPositionX + 5;
-            System.out.println("moving Right, position x  =  " + positionX);
-        } else {
-            System.out.println("car reached the RIGHT END point and stopped");
+    public void moveLeft(int endPointX){
+        while(this.positionX >= endPointX){
+            this.positionX -= this.speedActual;
+            System.out.println("position moving left x = " + this.positionX);
         }
+        System.out.println("car reached endpoint on left. endPoint is = " + endPointX);
+
     }
 
+    /**
+     * increases the actual x position by value of speed. So car moves to the right
+     */
+    @Override
+    public void moveRight(int endPointX) {
+        while(this.positionX <= endPointX){
+            this.positionX += this.speedActual;
+            System.out.println("position x = " + this.positionX);
+        }
+        System.out.println("car reached endpoint on right. endPoint is = " + endPointX);
+    }
 
 
     /* constructor */

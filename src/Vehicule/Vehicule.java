@@ -17,6 +17,6 @@ public abstract class Vehicule {
 
     protected abstract void slowDown();
     protected abstract void speedUp();
-    protected abstract void moveLeft(int actualPositionX, int endPointX);
-    protected abstract void moveRight(int actualPositionX, int endPointX);
+    protected abstract void moveLeft(int endPointX);
+    protected abstract void moveRight(int endPointX);
 }
