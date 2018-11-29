@@ -12,13 +12,11 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-
-
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
         primaryStage.setTitle("DRIVEX");
-        primaryStage.setScene(new Scene(root));
         primaryStage.show();
-
     }
 
 

@@ -23,7 +23,10 @@ public class Controller implements Initializable {
     private RoadController roadController;
     private CarController carController;
     public ImageView plane;
-
+    private int endPointXonLeftSideKAROLEKRoad;
+    private int endPointXonRightSideJARORoad;
+    protected int spawnPointOnKAROLEKRoadValueX;
+    protected int spawnPointOnJARORoadValueX;
 
 
     @Override
@@ -33,10 +36,14 @@ public class Controller implements Initializable {
         createRoadModels();
         createCarController();
         createCarModels();
-        moveCarLeft();
+        moveCars();
         movePlane();
     }
 
+
+    /**
+     * sets transitions for plane and then plays the animation of the plane in VIEW JAVA FX
+     */
     private void movePlane(){
 
         /* moves plane on the runway*/
@@ -69,18 +76,19 @@ public class Controller implements Initializable {
     }
 
 
-
-    private void moveCarRight() {
-//        int actualPositionX = carController.getListOFCarModel().get(0).getPositionX();
-//        car
-    }
-
-    public void moveCarLeft(){
-//        for(int i = 0; i < 100; i++) {
-//            int actualPositionX = carController.getListOFCarModel().get(0).getPositionX();
-//            int endPointX = roadController.getListOfRoadModel().get(0).getEndPoint().get("x");
-//            carController.moveLeft(actualPositionX, endPointX);
-//        }
+    /**
+     * iterates list with road models and based on the name of the road gets its end point
+     * then calls the move Cars method in car controller and passes endpoint to this method
+     */
+    private void moveCars() {
+        for (int i = 0; i < roadController.getListOfRoadModel().size(); i++) {
+            if (roadController.getListOfRoadModel().get(i).getRoadName() == "KAROLEK") {
+                endPointXonLeftSideKAROLEKRoad = roadController.getListOfRoadModel().get(i).getEndPoint().get("x");
+            } else {
+                endPointXonRightSideJARORoad = roadController.getListOfRoadModel().get(i).getEndPoint().get("x");
+            }
+        }
+        carController.moveCars(endPointXonLeftSideKAROLEKRoad, endPointXonRightSideJARORoad);
     }
 
 
@@ -93,6 +101,7 @@ public class Controller implements Initializable {
     private void createRoadModels(){
         HashMap<String, Integer> spawnPointKAROLEK = new HashMap<>();
         spawnPointKAROLEK.put("x", 950);
+        spawnPointOnKAROLEKRoadValueX = spawnPointKAROLEK.get("x");
         spawnPointKAROLEK.put("y", 100);
 
         HashMap<String, Integer> endPointKAROLEK = new HashMap<>();
@@ -100,7 +109,7 @@ public class Controller implements Initializable {
         endPointKAROLEK.put("y", 100);
 
         HashMap<String, Integer> trafficLightStopPointKAROLEK = new HashMap<>();
-        trafficLightStopPointKAROLEK.put("x", 420);
+        trafficLightStopPointKAROLEK.put("x", 380);
         trafficLightStopPointKAROLEK.put("y", 100);
 
 
@@ -109,6 +118,7 @@ public class Controller implements Initializable {
 
         HashMap<String, Integer> spawnPointJARO = new HashMap<>();
         spawnPointJARO.put("x", 50);
+        spawnPointOnJARORoadValueX = spawnPointJARO.get("x");
         spawnPointJARO.put("y", 142);
 
         HashMap<String, Integer> endPointJARO = new HashMap<>();
@@ -116,10 +126,10 @@ public class Controller implements Initializable {
         endPointJARO.put("y", 142);
 
         HashMap<String, Integer> trafficLightStopPointJARO = new HashMap<>();
-        trafficLightStopPointJARO.put("x", 380);
+        trafficLightStopPointJARO.put("x", 420);
         trafficLightStopPointJARO.put("y", 142);
 
-        roadController.createRoadModel(spawnPointKAROLEK, endPointKAROLEK, trafficLightStopPointKAROLEK, "KAROLE");
+        roadController.createRoadModel(spawnPointKAROLEK, endPointKAROLEK, trafficLightStopPointKAROLEK, "KAROLEK");
         roadController.createRoadModel(spawnPointJARO, endPointJARO, trafficLightStopPointJARO, "JARO");
 
         roadController.createRoadView();
@@ -131,8 +141,8 @@ public class Controller implements Initializable {
     }
 
     private void createCarModels(){
-        carController.createCarModel(10, 920, 90, 35, 20, "car1", "normal");
-        carController.createCarModel(10, 50, 132, 35, 20, "car2", "normal");
+        carController.createCarModel(2, spawnPointOnKAROLEKRoadValueX, 90, 35, 20, "car1", "normal");
+        carController.createCarModel(3, spawnPointOnJARORoadValueX, 132, 35, 20, "car2", "normal");
         carController.createCarView();
 
     }

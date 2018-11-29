@@ -39,4 +39,8 @@ public class RoadController {
            this.listOfGraphicalRepresentationOfRoad.add(roadView.getGraphicalRepresentationOfRoad());
         }
     }
+
+    public List<RoadModel> getListOfRoadModel() {
+        return listOfRoadModel;
+    }
 }
