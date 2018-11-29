@@ -61,7 +61,7 @@ public class Controller implements Initializable {
         endPointKAROLEK.put("y", 100);
 
         HashMap<String, Integer> trafficLightStopPointKAROLEK = new HashMap<>();
-        trafficLightStopPointKAROLEK.put("x", 420);
+        trafficLightStopPointKAROLEK.put("x", 380);
         trafficLightStopPointKAROLEK.put("y", 100);
 
 
@@ -78,7 +78,7 @@ public class Controller implements Initializable {
         endPointJARO.put("y", 142);
 
         HashMap<String, Integer> trafficLightStopPointJARO = new HashMap<>();
-        trafficLightStopPointJARO.put("x", 380);
+        trafficLightStopPointJARO.put("x", 420);
         trafficLightStopPointJARO.put("y", 142);
 
         roadController.createRoadModel(spawnPointKAROLEK, endPointKAROLEK, trafficLightStopPointKAROLEK, "KAROLEK");
