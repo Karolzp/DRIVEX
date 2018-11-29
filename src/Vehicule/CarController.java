@@ -51,11 +51,7 @@ public class CarController {
      * @param endPointXonRightSideJARORoad
      */
     public void moveCars(int endPointXonLeftSideKAROLEKRoad, int endPointXonRightSideJARORoad){
-        System.out.println("DUPA");
-        System.out.println(endPointXonLeftSideKAROLEKRoad);
-        System.out.println(endPointXonRightSideJARORoad);
         for(int i = 0; i < listOFCarModel.size(); i++){
-            listOFCarModel.get(i).getNameOfRoadWithThisCar();
             if(listOFCarModel.get(i).getNameOfRoadWithThisCar() == "KAROLEK"){
                 listOFCarModel.get(i).moveLeft(endPointXonLeftSideKAROLEKRoad);
             } else { listOFCarModel.get(i).moveRight(endPointXonRightSideJARORoad);}

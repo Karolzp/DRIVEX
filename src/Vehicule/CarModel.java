@@ -33,11 +33,10 @@ public class CarModel extends Vehicule {
      */
     @Override
     public void moveLeft(int endPointX){
-        while(this.positionX >= endPointX){
-            this.positionX -= this.speedActual;
-            System.out.println("position moving left x = " + this.positionX);
+        while(positionX >= endPointX){
+            positionX -= speedActual;
         }
-        System.out.println("car reached endpoint on left. endPoint is = " + endPointX);
+        System.out.println("car reached endpoint on left. endPoint is = " + endPointX + "actual position of car = " + positionX);
 
     }
 
@@ -47,10 +46,9 @@ public class CarModel extends Vehicule {
     @Override
     public void moveRight(int endPointX) {
         while(this.positionX <= endPointX){
-            this.positionX += this.speedActual;
-            System.out.println("position x = " + this.positionX);
+            positionX += speedActual;
         }
-        System.out.println("car reached endpoint on right. endPoint is = " + endPointX);
+        System.out.println("car reached endpoint on RIGHT. endPoint is = " + endPointX + "actual position of car = " + positionX);
     }
 
 
@@ -65,7 +63,11 @@ public class CarModel extends Vehicule {
         this.carName = carName;
         this.carType = carType;
         this.createCarRectangle();
+        if (positionX == 950) {
+            this.nameOfRoadWithThisCar = "KAROLEK";
+        } else {this.nameOfRoadWithThisCar = "JARO";}
     }
+
 
 
     public String getCarName() {
