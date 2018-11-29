@@ -12,12 +12,14 @@ public class LightsModel {
     private Rectangle trafficLightsBox;
     private Circle redLight;
     private Circle greenLight;
+    private int rotation;
 
 
 
-    public LightsModel(boolean isGreen, HashMap<String, Integer> positionOfTrafficLightBox) {
+    public LightsModel(boolean isGreen, HashMap<String, Integer> positionOfTrafficLightBox,int  rotation) {
         this.isGreen = isGreen;
         this.positionOfTrafficLightBox = positionOfTrafficLightBox;
+        this.rotation = rotation;
         createTrafficLightBox();
         createTrafficLightsCircles();
     }
@@ -31,6 +33,10 @@ public class LightsModel {
 
     public Circle getGreenLight() {
         return greenLight;
+    }
+
+    public int getRotation() {
+        return rotation;
     }
 
     public HashMap<String, Integer> getPositionOfTrafficLightBox() {

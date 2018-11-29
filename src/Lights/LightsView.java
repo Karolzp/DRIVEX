@@ -1,5 +1,6 @@
 package Lights;
 
+import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -21,23 +22,44 @@ public class LightsView {
         return RED;
     }
 
-    public void setGraphicalRepresentationOfTrafficLightsBox(Rectangle trafficLightsBox){
+    public void setGraphicalRepresentationOfTrafficLight(Rectangle trafficLightsBox,Circle redLight, Circle greenLight, int rotation){
+        Group box = new Group();
+
         trafficLightsBox.setFill(TAFFICLIGHTSBOX);
         trafficLightsBox.setStyle("-fx-stroke: black; -fx-stroke-width: 2;");
-        Controller.StaticMainStage.getChildren().add(trafficLightsBox);
+        box.getChildren().add(trafficLightsBox);
 
-    }
-
-    public void setGraphicalRepresentationOfTrafficLights(Circle redLight, Circle greenLight){
         this.redLight = redLight;
         this.redLight.setFill(RED);
-        Controller.StaticMainStage.getChildren().add(this.redLight);
+        box.getChildren().add(this.redLight);
 
         this.greenLight = greenLight;
         this.greenLight.setFill(GREEN);
-        Controller.StaticMainStage.getChildren().add(this.greenLight);
+        box.getChildren().add(this.greenLight);
 
+        box.setRotate(rotation);
+
+        Controller.StaticMainStage.getChildren().add(box);
     }
+
+
+//    public void setGraphicalRepresentationOfTrafficLightsBox(Rectangle trafficLightsBox){
+//        trafficLightsBox.setFill(TAFFICLIGHTSBOX);
+//        trafficLightsBox.setStyle("-fx-stroke: black; -fx-stroke-width: 2;");
+//        Controller.StaticMainStage.getChildren().add(trafficLightsBox);
+//
+//    }
+//
+//    public void setGraphicalRepresentationOfTrafficLights(Circle redLight, Circle greenLight){
+//        this.redLight = redLight;
+//        this.redLight.setFill(RED);
+//        Controller.StaticMainStage.getChildren().add(this.redLight);
+//
+//        this.greenLight = greenLight;
+//        this.greenLight.setFill(GREEN);
+//        Controller.StaticMainStage.getChildren().add(this.greenLight);
+//
+//    }
 
 
 }

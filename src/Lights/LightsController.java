@@ -13,29 +13,46 @@ public class LightsController {
         createTrafficLights(listOfRoadModel);
     }
 
-    private void createTrafficLightsModels(HashMap<String,Integer> positionOfTrafficLightBox){
-        LightsModel lights = new LightsModel(true, positionOfTrafficLightBox);
+    private void createTrafficLightsModels(HashMap<String,Integer> positionOfTrafficLightBox, int rotation){
+        LightsModel lights = new LightsModel(true, positionOfTrafficLightBox, rotation);
         listOfLights.add(lights);
     }
 
     private void createTrafficLightsView(){
         LightsView lightsView = new LightsView();
         for (int i = 0; i < listOfLights.size(); i++){
-            lightsView.setGraphicalRepresentationOfTrafficLightsBox(listOfLights.get(i).getTrafficLightsBox());
-            lightsView.setGraphicalRepresentationOfTrafficLights(listOfLights.get(i).getRedLight(),listOfLights.get(i).getGreenLight());
+
+            lightsView.setGraphicalRepresentationOfTrafficLight(listOfLights.get(i).getTrafficLightsBox(),listOfLights.get(i).getRedLight(),listOfLights.get(i).getGreenLight(), listOfLights.get(i).getRotation());
+//
+//            lightsView.setGraphicalRepresentationOfTrafficLightsBox(listOfLights.get(i).getTrafficLightsBox());
+//            lightsView.setGraphicalRepresentationOfTrafficLights(listOfLights.get(i).getRedLight(),listOfLights.get(i).getGreenLight());
         }
     }
 
     private void createTrafficLights(List<RoadModel> listOfRoadModel){
 
+        int height = 30;
+        int width = 16;
+        int rotation;
+
+
         for (int i = 0; i < listOfRoadModel.size(); i++) {
             HashMap<String, Integer> downLights = new HashMap<>();
-            downLights.put("x", listOfRoadModel.get(i).getTrafficLightStopPoint().get("x")-8);
-            downLights.put("y", listOfRoadModel.get(i).getTrafficLightStopPoint().get("y")-15);
-            downLights.put("h", 30);
-            downLights.put("w", 16);
 
-            createTrafficLightsModels(downLights);
+            if(listOfRoadModel.get(i).getSpawnPoint().get("x")<listOfRoadModel.get(i).getEndPoint().get("x")){
+                downLights.put("y", listOfRoadModel.get(i).getTrafficLightStopPoint().get("y")-height/2+40);
+                rotation = 90;
+            }else{
+                downLights.put("y", listOfRoadModel.get(i).getTrafficLightStopPoint().get("y")-height/2-40);
+                rotation = 270;
+            }
+
+
+            downLights.put("x", listOfRoadModel.get(i).getTrafficLightStopPoint().get("x")-width/2);
+            downLights.put("h", height);
+            downLights.put("w", width);
+
+            createTrafficLightsModels(downLights,rotation);
         }
 
         createTrafficLightsView();
