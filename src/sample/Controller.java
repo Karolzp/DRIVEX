@@ -76,11 +76,11 @@ public class Controller implements Initializable {
     }
 
     public void moveCarLeft(){
-        for(int i = 0; i < 100; i++) {
-            int actualPositionX = carController.getListOFCarModel().get(0).getPositionX();
-            int endPointX = roadController.getListOfRoadModel().get(0).getEndPoint().get("x");
-            carController.moveLeft(actualPositionX, endPointX);
-        }
+//        for(int i = 0; i < 100; i++) {
+//            int actualPositionX = carController.getListOFCarModel().get(0).getPositionX();
+//            int endPointX = roadController.getListOfRoadModel().get(0).getEndPoint().get("x");
+//            carController.moveLeft(actualPositionX, endPointX);
+//        }
     }
 
 
