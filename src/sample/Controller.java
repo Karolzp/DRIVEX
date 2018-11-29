@@ -2,8 +2,17 @@ package sample;
 
 import Road.*;
 import Vehicule.CarController;
+import javafx.animation.ParallelTransition;
+import javafx.animation.ScaleTransition;
+import javafx.animation.SequentialTransition;
+import javafx.animation.TranslateTransition;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Path;
+import javafx.util.Duration;
+
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
@@ -13,6 +22,7 @@ public class Controller implements Initializable {
     public static Pane StaticMainStage;
     private RoadController roadController;
     private CarController carController;
+    public ImageView plane;
 
 
 
@@ -24,7 +34,41 @@ public class Controller implements Initializable {
         createCarController();
         createCarModels();
         moveCarLeft();
+        movePlane();
     }
+
+    private void movePlane(){
+
+        /* moves plane on the runway*/
+        TranslateTransition runWayStartTransition = new TranslateTransition();
+        runWayStartTransition.setDuration(Duration.seconds(3));
+        runWayStartTransition.setToX(-180);
+        runWayStartTransition.setNode(plane);
+
+        /* makes the plane x3 bigger */
+        ScaleTransition scaleBigger = new ScaleTransition();
+        scaleBigger.setDuration(Duration.seconds(5));
+        scaleBigger.setToX(3);
+        scaleBigger.setToY(3);
+        scaleBigger.setNode(plane);
+
+        /* moves plane further to left after leaving runway*/
+        TranslateTransition flyFromRunWayTransition = new TranslateTransition();
+        flyFromRunWayTransition.setDuration(Duration.seconds(7));
+        flyFromRunWayTransition.setToX(-1000);
+        flyFromRunWayTransition.setNode(plane);
+
+        SequentialTransition sequentialTransition = new SequentialTransition();
+        ParallelTransition parallelTransitionTakeOff = new ParallelTransition(scaleBigger, flyFromRunWayTransition);
+
+        sequentialTransition.getChildren().addAll(
+                runWayStartTransition,
+                parallelTransitionTakeOff
+        );
+        sequentialTransition.play();
+    }
+
+
 
     private void moveCarRight() {
 //        int actualPositionX = carController.getListOFCarModel().get(0).getPositionX();
