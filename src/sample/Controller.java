@@ -19,7 +19,6 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         StaticMainStage = this.MainStage;
         createRoadController();
-        createRoadModels();
         createTrafficLightsController();
     }
 
@@ -35,38 +34,5 @@ public class Controller implements Initializable {
     }
 
 
-    private void createRoadModels(){
-        HashMap<String, Integer> spawnPointKAROLEK = new HashMap<>();
-        spawnPointKAROLEK.put("x", 950);
-        spawnPointKAROLEK.put("y", 100);
 
-        HashMap<String, Integer> endPointKAROLEK = new HashMap<>();
-        endPointKAROLEK.put("x", 50 );
-        endPointKAROLEK.put("y", 100);
-
-        HashMap<String, Integer> trafficLightStopPointKAROLEK = new HashMap<>();
-        trafficLightStopPointKAROLEK.put("x", 420);
-        trafficLightStopPointKAROLEK.put("y", 100);
-
-
-
-
-
-        HashMap<String, Integer> spawnPointJARO = new HashMap<>();
-        spawnPointJARO.put("x", 50);
-        spawnPointJARO.put("y", 142);
-
-        HashMap<String, Integer> endPointJARO = new HashMap<>();
-        endPointJARO.put("x", 950 );
-        endPointJARO.put("y", 142);
-
-        HashMap<String, Integer> trafficLightStopPointJARO = new HashMap<>();
-        trafficLightStopPointJARO.put("x", 380);
-        trafficLightStopPointJARO.put("y", 142);
-
-        roadController.createRoadModel(spawnPointKAROLEK, endPointKAROLEK, trafficLightStopPointKAROLEK, "KAROLE");
-        roadController.createRoadModel(spawnPointJARO, endPointJARO, trafficLightStopPointJARO, "JARO");
-
-        roadController.createRoadView();
-    }
 }
