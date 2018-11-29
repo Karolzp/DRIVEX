@@ -31,7 +31,7 @@ public class LightsController {
         downLights.put("x", 500 );
         downLights.put("y", 400);
         downLights.put("h", 30);
-        downLights.put("w", 15);
+        downLights.put("w", 16);
 
         createTrafficLightsModels(downLights);
         createTrafficLightsView();

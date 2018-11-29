@@ -59,11 +59,13 @@ public class LightsModel {
         this.redLight = new Circle();
 
         greenLight.setCenterX(positionOfTrafficLightBox.get("x")+(positionOfTrafficLightBox.get("w")/2));
-        greenLight.setCenterY(positionOfTrafficLightBox.get("y")+(positionOfTrafficLightBox.get("h")/3));
+        greenLight.setCenterY(positionOfTrafficLightBox.get("y")+positionOfTrafficLightBox.get("h")-(positionOfTrafficLightBox.get("h")/3.5));
         greenLight.setRadius(positionOfTrafficLightBox.get("w")/3);
+        greenLight.setStyle("-fx-stroke: black; -fx-stroke-width: 0.6;");
 
         redLight.setCenterX(positionOfTrafficLightBox.get("x")+(positionOfTrafficLightBox.get("w")/2));
-        redLight.setCenterY(positionOfTrafficLightBox.get("y")+(positionOfTrafficLightBox.get("h")/3*2));
+        redLight.setCenterY(positionOfTrafficLightBox.get("y")+(positionOfTrafficLightBox.get("h")/3.5));
         redLight.setRadius(positionOfTrafficLightBox.get("w")/3);
+        redLight.setStyle("-fx-stroke: black; -fx-stroke-width: 0.6;");
     }
 }
