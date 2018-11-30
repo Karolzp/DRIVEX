@@ -76,5 +76,6 @@ public class RoadController {
         createRoadModel(spawnPointJARO, endPointJARO, trafficLightStopPointJARO, "JARO");
 
         createRoadView();
+
     }
 }
