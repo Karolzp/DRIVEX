@@ -153,8 +153,8 @@ public class Controller implements Initializable {
     }
 
     private void createCarModels(){
-        carController.createCarModel(2, spawnPointOnKAROLEKRoadValueX, 90, 35, 20, "car1", "normal");
-        carController.createCarModel(3, spawnPointOnJARORoadValueX, 132, 35, 20, "car2", "normal");
+        carController.createCarModel(2, roadController.getListOfRoadModel().get(0).getSpawnPoint().get("x"), 90, 35, 20, "car1", "normal");
+        carController.createCarModel(3, roadController.getListOfRoadModel().get(1).getSpawnPoint().get("x"), 132, 35, 20, "car2", "normal");
         carController.createCarView();
 
     }
