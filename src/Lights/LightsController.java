@@ -13,8 +13,9 @@ public class LightsController {
         createTrafficLights(listOfRoadModel);
     }
 
-    private void createTrafficLightsModels(HashMap<String,Integer> positionOfTrafficLightBox, int rotation){
+    private void createTrafficLightsModels(HashMap<String,Integer> positionOfTrafficLightBox, int rotation, RoadModel roadModel){
         LightsModel lights = new LightsModel(true, positionOfTrafficLightBox, rotation);
+        roadModel.setTrafficlights(lights);
         listOfLights.add(lights);
     }
 
@@ -52,7 +53,8 @@ public class LightsController {
             downLights.put("h", height);
             downLights.put("w", width);
 
-            createTrafficLightsModels(downLights,rotation);
+            listOfRoadModel.get(i);
+            createTrafficLightsModels(downLights,rotation, listOfRoadModel.get(i));
         }
 
         createTrafficLightsView();
