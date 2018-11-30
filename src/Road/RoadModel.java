@@ -54,8 +54,9 @@ public class RoadModel {
         return roadLine;
     }
 
-    public void setTrafficlights(LightsModel trafficlights) {
-        this.trafficlights = trafficlights;
+    public void setTrafficlights(LightsModel trafficlight) {
+
+        this.trafficlights = trafficlight;
     }
 
     /**
