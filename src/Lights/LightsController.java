@@ -22,20 +22,14 @@ public class LightsController {
     private void createTrafficLightsView(){
         LightsView lightsView = new LightsView();
         for (int i = 0; i < listOfLights.size(); i++){
-
             lightsView.setGraphicalRepresentationOfTrafficLight(listOfLights.get(i).getTrafficLightsBox(),listOfLights.get(i).getRedLight(),listOfLights.get(i).getGreenLight(), listOfLights.get(i).getRotation());
-//
-//            lightsView.setGraphicalRepresentationOfTrafficLightsBox(listOfLights.get(i).getTrafficLightsBox());
-//            lightsView.setGraphicalRepresentationOfTrafficLights(listOfLights.get(i).getRedLight(),listOfLights.get(i).getGreenLight());
         }
     }
 
     private void createTrafficLights(List<RoadModel> listOfRoadModel){
-
         int height = 30;
         int width = 16;
         int rotation;
-
 
         for (int i = 0; i < listOfRoadModel.size(); i++) {
             HashMap<String, Integer> downLights = new HashMap<>();
@@ -47,7 +41,6 @@ public class LightsController {
                 downLights.put("y", listOfRoadModel.get(i).getTrafficLightStopPoint().get("y")-height/2-40);
                 rotation = 270;
             }
-
 
             downLights.put("x", listOfRoadModel.get(i).getTrafficLightStopPoint().get("x")-width/2);
             downLights.put("h", height);

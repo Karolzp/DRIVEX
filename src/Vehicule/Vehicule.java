@@ -1,11 +1,12 @@
 package Vehicule;
 
+import Road.RoadModel;
 import javafx.scene.shape.Rectangle;
 
 public abstract class Vehicule {
 
     private String carName;
-    private String carType;
+//    private String carType;
     private int speedMax;
     private int speedActual;
     private String nameOfRoadWithThisCar;
@@ -19,4 +20,5 @@ public abstract class Vehicule {
     protected abstract void speedUp();
     protected abstract void moveLeft(int endPointX);
     protected abstract void moveRight(int endPointX);
+    protected abstract void move(RoadModel roadWithThisCar, int endPointX);
 }

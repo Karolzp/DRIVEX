@@ -7,10 +7,10 @@ import javafx.scene.shape.Rectangle;
 public class CarModel extends Vehicule {
 
     private String carName;
-    private String carType;
+//    private String carType;
     private int speedMax;
     private int speedActual;
-    private String nameOfRoadWithThisCar;
+    private RoadModel roadWithThisCar;
     private int positionX;
     private int positionY;
     private int widthOfCar;
@@ -33,11 +33,8 @@ public class CarModel extends Vehicule {
      */
     @Override
     public void moveLeft(int endPointX){
-        while(positionX >= endPointX){
-            positionX -= speedActual;
-        }
+        positionX -= 1;
         System.out.println("car reached endpoint on left. endPoint is = " + endPointX + "actual position of car = " + positionX);
-
     }
 
     /**
@@ -45,15 +42,24 @@ public class CarModel extends Vehicule {
      */
     @Override
     public void moveRight(int endPointX) {
-        while(this.positionX <= endPointX){
-            positionX += speedActual;
-        }
+        positionX += 1;
         System.out.println("car reached endpoint on RIGHT. endPoint is = " + endPointX + "actual position of car = " + positionX);
+    }
+
+    @Override
+    public void move(RoadModel roadWithThisCar, int endPointX){
+        if (roadWithThisCar.getRoadName().equals("KAROLEK")){
+            positionX -= 1;
+            System.out.println("car heading right. endPoint is = " + endPointX + "actual position of car = " + positionX);
+        } else {
+            positionX += 1;
+            System.out.println("car heading left. endPoint is = " + endPointX + "actual position of car = " + positionX);
+        }
     }
 
 
     /* constructor */
-    public CarModel(int speedMax, int positionX, int positionY, int widthOfCar, int heightOfCar, String carName, String carType) {
+    public CarModel(int speedMax, int positionX, int positionY, int widthOfCar, int heightOfCar, String carName, RoadModel roadWithThisCar) {
         this.speedMax = speedMax;
         this.speedActual = speedMax;
         this.positionX = positionX;
@@ -61,11 +67,9 @@ public class CarModel extends Vehicule {
         this.widthOfCar = widthOfCar;
         this.heightOfCar = heightOfCar;
         this.carName = carName;
-        this.carType = carType;
+//        this.carType = carType;
         this.createCarRectangle();
-        if (positionX == 950) {
-            this.nameOfRoadWithThisCar = "KAROLEK";
-        } else {this.nameOfRoadWithThisCar = "JARO";}
+        this.roadWithThisCar = roadWithThisCar;
     }
 
 
@@ -74,9 +78,9 @@ public class CarModel extends Vehicule {
         return carName;
     }
 
-    public String getCarType() {
-        return carType;
-    }
+//    public String getCarType() {
+//        return carType;
+//    }
 
     public int getSpeedMax() {
         return speedMax;
@@ -126,8 +130,8 @@ public class CarModel extends Vehicule {
         this.heightOfCar = heightOfCar;
     }
 
-    public String getNameOfRoadWithThisCar() {
-        return nameOfRoadWithThisCar;
+    public RoadModel getRoadWithThisCar() {
+        return roadWithThisCar;
     }
 
     public Rectangle getCarRectangle() {
@@ -136,9 +140,18 @@ public class CarModel extends Vehicule {
 
     private void createCarRectangle(){
         this.carRectangle = new Rectangle();
-        carRectangle.setX(positionX);
-        carRectangle.setY(positionY);
-        carRectangle.setWidth(widthOfCar);
-        carRectangle.setHeight(heightOfCar);
+        this.carRectangle.setX(positionX);
+        this.carRectangle.setY(positionY);
+        this.carRectangle.setWidth(widthOfCar);
+        this.carRectangle.setHeight(heightOfCar);
     }
+
+    public boolean checkIfReachedTheEnd(){
+        if (this.roadWithThisCar.getEndPoint().get("x") == this.positionX){
+            return true;
+        }
+        return false;
+    }
+
+
 }

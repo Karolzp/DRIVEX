@@ -8,15 +8,25 @@ import java.util.List;
 
 
 public class RoadController {
-    protected List<RoadModel> listOfRoadModel = new ArrayList<RoadModel>();
+    protected static List<RoadModel> listOfRoadModel = new ArrayList<RoadModel>();
     protected List<Line> listOfGraphicalRepresentationOfRoad = new ArrayList<javafx.scene.shape.Line>();
+    private int endPointXonLeftSideKAROLEKRoad;
+    private int endPointXonRightSideJARORoad;
 
     public RoadController(){
-        createRoadModels();
+        createRoads();
     }
 
-    public List<RoadModel> getListOfRoadModel() {
+    public static List<RoadModel> getListOfRoadModel() {
         return listOfRoadModel;
+    }
+
+    public int getEndPointXonLeftSideKAROLEKRoad() {
+        return endPointXonLeftSideKAROLEKRoad;
+    }
+
+    public int getEndPointXonRightSideJARORoad() {
+        return endPointXonRightSideJARORoad;
     }
 
     /**
@@ -47,13 +57,17 @@ public class RoadController {
         }
     }
 
-    private void createRoadModels(){
+    //Great refactor - u missed the last letter in KAROLEK road.
+    //Why isnt it a variable?
+    //Why didnt you removed the same function from the main controller?
+    private void createRoads(){
         HashMap<String, Integer> spawnPointKAROLEK = new HashMap<>();
         spawnPointKAROLEK.put("x", 950);
         spawnPointKAROLEK.put("y", 100);
 
         HashMap<String, Integer> endPointKAROLEK = new HashMap<>();
         endPointKAROLEK.put("x", 50 );
+        this.endPointXonLeftSideKAROLEKRoad = endPointKAROLEK.get("x");
         endPointKAROLEK.put("y", 100);
 
         HashMap<String, Integer> trafficLightStopPointKAROLEK = new HashMap<>();
@@ -66,13 +80,14 @@ public class RoadController {
 
         HashMap<String, Integer> endPointJARO = new HashMap<>();
         endPointJARO.put("x", 950 );
+        this.endPointXonRightSideJARORoad = endPointJARO.get("x");
         endPointJARO.put("y", 142);
 
         HashMap<String, Integer> trafficLightStopPointJARO = new HashMap<>();
         trafficLightStopPointJARO.put("x", 380);
         trafficLightStopPointJARO.put("y", 142);
 
-        createRoadModel(spawnPointKAROLEK, endPointKAROLEK, trafficLightStopPointKAROLEK, "KAROLE");
+        createRoadModel(spawnPointKAROLEK, endPointKAROLEK, trafficLightStopPointKAROLEK, "KAROLEK");
         createRoadModel(spawnPointJARO, endPointJARO, trafficLightStopPointJARO, "JARO");
 
         createRoadView();
