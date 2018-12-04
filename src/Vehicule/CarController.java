@@ -8,7 +8,7 @@ import javafx.scene.shape.Rectangle;
 
 import java.util.*;
 
-public class CarController {
+public class CarController  {
 
 
 //    private HashMap<String, CarModel> hashmapOfCarModel = new HashMap();
@@ -75,7 +75,7 @@ public class CarController {
     //Congratulations for using magic numbers again.
     //And for creating CAR MODELS in MAIN CONTROLLR eventhough we discussed that models of X object should be created in X object Controller.
     private void createCars() {
-        CarModel carModel1 = createCarModel(1, RoadController.getListOfRoadModel().get(0).getSpawnPoint().get("x"), 90, 35, 20, "car1",  RoadController.getListOfRoadModel().get(0));
+        CarModel carModel1 = createCarModel(1, RoadController.getListOfRoadModel().get(0).getSpawnPoint().get("x"), 90, 35, 20, "car1", RoadController.getListOfRoadModel().get(0));
         createCarView(carModel1);
 
         CarModel carModel2 = createCarModel(1, RoadController.getListOfRoadModel().get(1).getSpawnPoint().get("x"), 132, 35, 20, "car2", RoadController.getListOfRoadModel().get(1));
@@ -93,79 +93,34 @@ public class CarController {
      */
     public void moveCars() {
 
-        Timer timer = new Timer();
-
-//        for (int j = 0; j < 1200 ; j++) {
-//            listOfCarModel.get(0).move(listOfCarModel.get(0).getRoadWithThisCar(), listOfCarModel.get(0).getRoadWithThisCar().getEndPoint().get("x"));
-//            int newPosition = listOfCarModel.get(0).getPositionX();
-//            listOfCarView.get(0).changeCarLayout(newPosition);
-//        }
-
-
         for (int i = 0; i < listOfCarModel.size(); i++) {
-//
-//            for (int j = 0; j < 1 ; j++) {
-//                listOfCarModel.get(i).move(listOfCarModel.get(i).getRoadWithThisCar(), listOfCarModel.get(i).getRoadWithThisCar().getEndPoint().get("x"));
-//                int newPosition = listOfCarModel.get(i).getPositionX();
-//                listOfCarView.get(i).changeCarLayout(newPosition);
-//                listOfCarView.get(i).changeCarLayout(52);
-//            }
-
-            int finalI = i;
-            TimerTask timerTask = new TimerTask() {
-                @Override
-                public void run() {
-                    listOfCarModel.get(finalI).move(listOfCarModel.get(finalI).getRoadWithThisCar(), listOfCarModel.get(finalI).getRoadWithThisCar().getEndPoint().get("x"));
-                    int newPosition = listOfCarModel.get(finalI).getPositionX();
-                    if (listOfCarModel.get(finalI).checkIfReachedTheEnd()){
-                    this.cancel();
-                    }
-                    listOfCarView.get(finalI).changeCarLayout(newPosition);
-
-
-
-//                    CarMove carMove = new CarMove(listOfCarModel.get(finalI), listOfCarView.get(finalI));
-//
-//                    carMove.start();
-//                    carMove.interrupt();
-                }
-            };
-            timer.schedule(timerTask, 0, 10);
-
+            CarMove carMove = new CarMove(listOfCarModel.get(i), listOfCarView.get(i));
+            carMove.start();
         }
+
     }
-
-//        for (CarModel carModel : hashmapOfCarModel.values()) {
-//                AnimationTimer timer = new AnimationTimer(){
-//                @Override
-//                public void handle(long now) {
-//                    carModel.move(carModel.getRoadWithThisCar(), carModel.getRoadWithThisCar().getEndPoint().get("x"));
-//                    int newPosition = carModel.getPositionX();
-//                    hashmapOfGrapicalRepresentationsOfCar.get(carModel.getCarName()).changeCarLayout(newPosition);
-//                }
-//            };
+//    private AnimationTimer timer;
+//    @Override public void start() {
 //
-//        }
-
-//        for (CarModel carModel : hashmapOfCarModel.values()) {
+//        timer = new AnimationTimer() {
+//            @Override
+//            public void handle(long l) {
+//                for (int i = 0; i < listOfCarModel.size(); i++) {
 //
-//            TimerTask timerTask = new TimerTask() {
-//                @Override
-//                public void run() {
-//                    carModel.move(carModel.getRoadWithThisCar(), carModel.getRoadWithThisCar().getEndPoint().get("x"));
-//                    int newPosition = carModel.getPositionX();
-//                    hashmapOfGrapicalRepresentationsOfCar.get(carModel.getCarName()).changeCarLayout(newPosition);
-//                    if (newPosition == carModel.getRoadWithThisCar().getEndPoint().get("x")) {
-//                        this.cancel();
+//                    listOfCarModel.get(0).move(listOfCarModel.get(0).getRoadWithThisCar(), listOfCarModel.get(0).getRoadWithThisCar().getEndPoint().get("x"));
+//                    int newPosition = listOfCarModel.get(0).getPositionX();
+//                    if (listOfCarModel.get(0).checkIfReachedTheEnd()) {
+//
 //                    }
-//                }
-//            };
-//            timer.schedule(timerTask, 0, 1);
+//                    listOfCarView.get(0).changeCarLayout(newPosition);
 //
-//        }
-
-    }
-
+//
+//                }
+//            }
+//
+//        };
+//    }
+}
 
 
 
