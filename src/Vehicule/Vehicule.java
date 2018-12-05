@@ -15,10 +15,13 @@ public abstract class Vehicule {
     private int widthOfCar;
     private int heightOfCar;
     private Rectangle carRectangle;
+    private double acceleration;
+    private double breakAcceleration;
 
     protected abstract void slowDown();
     protected abstract void speedUp();
     protected abstract void moveLeft(int endPointX);
     protected abstract void moveRight(int endPointX);
     protected abstract void move(RoadModel roadWithThisCar, int endPointX);
+    protected abstract void calculateActualSpeed(CarModel nextCar);
 }

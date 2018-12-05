@@ -8,14 +8,16 @@ public class CarModel extends Vehicule {
 
     private String carName;
 //    private String carType;
-    private int speedMax;
-    private int speedActual;
+    private double speedMax;
+    private double speedActual;
     private RoadModel roadWithThisCar;
-    private int positionX;
+    private double positionX;
     private int positionY;
     private int widthOfCar;
     private int heightOfCar;
     private Rectangle carRectangle;
+    private double acceleration;
+    private double breakAcceleration;
 
     @Override
     protected void slowDown() {
@@ -47,15 +49,42 @@ public class CarModel extends Vehicule {
     }
 
     @Override
+    public void calculateActualSpeed(CarModel nextCar){
+        if (speedActual > nextCar.speedActual) {
+            if (Math.abs(positionX - nextCar.positionX) / speedActual == (speedActual - nextCar.speedActual) / breakAcceleration) {
+                speedActual = speedActual - breakAcceleration;
+            } else if (Math.abs(positionX - nextCar.positionX) / speedActual <= (speedActual - nextCar.speedActual) / breakAcceleration) {
+                speedActual = speedActual - (Math.pow((speedActual - nextCar.speedActual), 2) / (2 * Math.abs(positionX - nextCar.positionX)));
+            } else {
+                speedActual = speedActual;
+            }
+        } else if(speedActual < nextCar.speedActual){
+            if(speedActual<speedMax){
+                speedActual = speedActual + acceleration;
+            }else{
+                speedActual = speedActual;
+            }
+
+        } else if (speedActual == nextCar.speedActual){
+            speedActual = speedActual
+        }
+
+
+
+    }
+    @Override
     public void move(RoadModel roadWithThisCar, int endPointX){
+        calculateActualSpeed(nextCar);
         if (roadWithThisCar.getRoadName().equals("KAROLEK")){
-            positionX -= 1;
+            positionX = positionX - speedActual;
             System.out.println("car heading right. endPoint is = " + endPointX + "actual position of car = " + positionX);
         } else {
-            positionX += 1;
+            positionX = positionX + speedActual;
             System.out.println("car heading left. endPoint is = " + endPointX + "actual position of car = " + positionX);
         }
     }
+
+
 
 
     /* constructor */
