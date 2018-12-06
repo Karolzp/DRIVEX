@@ -1,0 +1,27 @@
+package Vehicle;
+
+import Road.RoadModel;
+
+import static Vehicle.CarController.CarModels.TRUCK;
+
+public class TruckCarModel extends Vehicle {
+
+    /* constructor */
+    public TruckCarModel(RoadModel roadWithThisCar) {
+        super(roadWithThisCar);
+        speedMax = 0.1;
+        speedActual = speedMax;
+        carEnum = TRUCK;
+    }
+
+    @Override
+    protected void slowDown() {
+//TODO
+    }
+
+    @Override
+    protected void speedUp() {
+//TODO
+    }
+
+}

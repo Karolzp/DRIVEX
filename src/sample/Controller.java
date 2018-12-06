@@ -2,7 +2,7 @@ package sample;
 
 import Lights.LightsController;
 import Road.*;
-import Vehicule.CarController;
+import Vehicle.CarController;
 import javafx.animation.ParallelTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.SequentialTransition;
@@ -13,7 +13,6 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
 import java.net.URL;
-import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -27,13 +26,6 @@ public class Controller implements Initializable {
 
     public ImageView plane;
 
-    //half of the variables was private and other half protected, mr JARO pls explain?
-    private int endPointXonLeftSideKAROLEKRoad;
-    private int endPointXonRightSideJARORoad;
-    private int spawnPointOnKAROLEKRoadValueX;
-    private int spawnPointOnJARORoadValueX;
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -43,7 +35,6 @@ public class Controller implements Initializable {
         createTrafficLightsController();
         createCarController();
 
-//        moveCars();
         movePlane();
     }
 
@@ -85,24 +76,6 @@ public class Controller implements Initializable {
     }
 
 
-    /**
-     * iterates list with road models and based on the name of the road gets its end point
-     * then calls the move Cars method in car controller and passes endpoint to this method
-     */
-//    private void moveCars() {
-//        for (int i = 0; i < roadController.getListOfRoadModel().size(); i++) {
-////            listOFCarModel.get(i).getNameOfRoadWithThisCar();
-//            if (roadController.getListOfRoadModel().get(i).getRoadName() == "KAROLEK") {
-//                endPointXonLeftSideKAROLEKRoad = roadController.getListOfRoadModel().get(i).getEndPoint().get("x");
-//            } else {
-//                endPointXonRightSideJARORoad = roadController.getListOfRoadModel().get(i).getEndPoint().get("x");
-//            }
-//        }
-//        carController.moveCars(endPointXonLeftSideKAROLEKRoad, endPointXonRightSideJARORoad);
-//
-//    }
-
-// THESE ARE THE BEST METHODS SO FAR
     private void createRoadController() {
         RoadController roadController = new RoadController();
         this.roadController = roadController;
@@ -114,7 +87,7 @@ public class Controller implements Initializable {
     }
 
     private void createCarController(){
-        CarController carController = new CarController(roadController.getEndPointXonLeftSideKAROLEKRoad(), roadController.getEndPointXonRightSideJARORoad());
+        CarController carController = new CarController(roadController.getListOfRoadModel());
         this.carController = carController;
     }
 
