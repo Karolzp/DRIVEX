@@ -10,6 +10,8 @@ public class BlackViperCarModel extends Vehicle {
     public BlackViperCarModel(RoadModel roadWithThisCar, Vehicle carBefore) {
         super(roadWithThisCar, carBefore);
         speedMax = 0.4;
+        acceleration = 0.004;
+        breakAcceleration = 0.4;
         speedActual = speedMax;
         carEnum = BLACK_VIPER;
     }

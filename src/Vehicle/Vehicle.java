@@ -8,6 +8,8 @@ public abstract class Vehicle {
     protected CarController.CarModels carEnum;
     protected double speedMax;
     protected double speedActual;
+    protected double acceleration;
+    protected double breakAcceleration;
     protected RoadModel roadWithThisCar;
     protected double positionX;
     protected double positionY;
@@ -18,7 +20,7 @@ public abstract class Vehicle {
 
     public Vehicle(RoadModel roadWithThisCar, Vehicle carBefore) {
         this.roadWithThisCar = roadWithThisCar;
-        this.positionX = roadWithThisCar.getSpawnPoint().get("x");
+        this.positionX = roadWithThisCar.getSpawnPoint().get("x") - 17.5;
         this.positionY = roadWithThisCar.getSpawnPoint().get("y") - 18;
         this.carRectangle = createCarRectangle();
         this.carBefore = carBefore;
@@ -57,7 +59,7 @@ public abstract class Vehicle {
 
     protected boolean checkIfReachedTheEnd(){
         byte stopMargin = 2;
-        if (positionX > this.roadWithThisCar.getEndPoint().get("x") - stopMargin && positionX < this.roadWithThisCar.getEndPoint().get("x") + stopMargin){
+        if (positionX > this.roadWithThisCar.getEndPoint().get("x") - 17.5 - stopMargin && positionX < this.roadWithThisCar.getEndPoint().get("x") - 17.5 + stopMargin){
             return true;
         }
         return false;
@@ -72,18 +74,44 @@ public abstract class Vehicle {
         return newRectangle;
     }
 
+    public void calculateActualSpeed(Vehicle nextCar) {
+
+            if (speedActual > nextCar.speedActual) {
+                if ((Math.abs(positionX - nextCar.positionX) <= widthOfCar*1.2)){
+                    speedActual = nextCar.speedActual;
+                }
+                else if((Math.abs(positionX - nextCar.positionX)-widthOfCar)*(speedActual - nextCar.speedActual) <= (speedMax - nextCar.speedActual) * speedMax*200){
+                    speedActual = speedActual - (((speedMax - nextCar.speedActual)) / (10*(Math.abs(positionX - nextCar.positionX))+widthOfCar/2));
+                    System.out.println(speedActual);
+                }
+            }
+            else if (speedActual < nextCar.speedActual) {
+                if (speedActual < speedMax) {
+                    speedActual = speedActual + acceleration;
+                }
+            }
+//            else if(speedActual == nextCar.speedActual && (Math.abs(positionX - nextCar.positionX) <= widthOfCar*1)){
+//                speedActual = speedActual - 0.15;
+//            }
+
+        }
+
+
     protected void move(RoadModel roadWithThisCar){
 
         int endPointX = roadWithThisCar.getEndPoint().get("x");
         int spawnPointX = roadWithThisCar.getSpawnPoint().get("x");
         int trafficLightsStopPointX = roadWithThisCar.getTrafficLightStopPoint().get("x");
 
+        if (carBefore != null) {
+            calculateActualSpeed(carBefore);
+        }
         if (spawnPointX > endPointX){
             positionX -= speedActual;
-            System.out.println("car heading right. endPoint is = " + endPointX + "actual position of car = " + positionX);
+//            System.out.println("car heading right. endPoint is = " + endPointX + "actual position of car = " + positionX);
         } else {
             positionX += speedActual;
-            System.out.println("car heading left. endPoint is = " + endPointX + "actual position of car = " + positionX);
+//            System.out.println("car heading left. endPoint is = " + endPointX + "actual position of car = " + positionX);
         }
     }
 }
