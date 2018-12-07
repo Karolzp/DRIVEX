@@ -79,9 +79,8 @@ public abstract class Vehicle {
             if (speedActual > nextCar.speedActual) {
                 if ((Math.abs(positionX - nextCar.positionX) <= widthOfCar*1.2)){
                     speedActual = nextCar.speedActual;
-                }
-                else if((Math.abs(positionX - nextCar.positionX)-widthOfCar)*(speedActual - nextCar.speedActual) <= (speedMax - nextCar.speedActual) * speedMax*200){
-                    speedActual = speedActual - (((speedMax - nextCar.speedActual)) / (10*(Math.abs(positionX - nextCar.positionX))+widthOfCar/2));
+                }else if((Math.abs(positionX - nextCar.positionX)-widthOfCar)*(speedActual - nextCar.speedActual) <= (speedMax - nextCar.speedActual) * speedMax*220){
+                    speedActual = speedActual - ((speedActual - nextCar.speedActual) / (10*(Math.abs(positionX - nextCar.positionX))+widthOfCar/2));
                     System.out.println(speedActual);
                 }
             }
