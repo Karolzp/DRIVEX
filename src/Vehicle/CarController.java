@@ -89,7 +89,7 @@ public class CarController {
      */
     private void moveCars() {
         ScheduledExecutorService service = Executors.newScheduledThreadPool(10);
-        service.scheduleAtFixedRate(startNewCar(), 0, rand.nextInt(3) + 1, TimeUnit.SECONDS);
+        service.scheduleAtFixedRate(startNewCar(), 0, rand.nextInt(1) + 3, TimeUnit.SECONDS);
     }
 
     /**
