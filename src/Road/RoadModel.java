@@ -3,12 +3,14 @@ package Road;
 import Lights.LightsModel;
 import Vehicle.Vehicle;
 import javafx.scene.shape.Line;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class RoadModel {
     private String roadName;
-    private List <Vehicle> carsOnRoad;
+    private List <Vehicle> carsOnRoad = new ArrayList<Vehicle>();
     private HashMap<String, Integer> spawnPoint;
     private HashMap<String, Integer> endPoint;
     private HashMap<String, Integer> trafficLightStopPoint;
@@ -23,6 +25,7 @@ public class RoadModel {
         this.endPoint = endPoint;
         this.trafficLightStopPoint = trafficLightStopPoint;
         this.createRoadLine(spawnPoint, endPoint);
+        addCarToListOfCarsOnRoad(null);
     }
 
 
@@ -30,8 +33,8 @@ public class RoadModel {
         return roadName;
     }
 
-    public void setCarsOnRoad(List<Vehicle> carsOnRoad) {
-        this.carsOnRoad = carsOnRoad;
+    public void addCarToListOfCarsOnRoad(Vehicle car) {
+        this.carsOnRoad.add(car);
     }
 
     public List<Vehicle> getCarsOnRoad() {

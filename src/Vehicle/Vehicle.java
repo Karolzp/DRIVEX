@@ -14,12 +14,14 @@ public abstract class Vehicle {
     protected double widthOfCar = 35;
     protected double heightOfCar = 35;
     protected Rectangle carRectangle;
+    protected Vehicle carBefore;
 
-    public Vehicle(RoadModel roadWithThisCar) {
+    public Vehicle(RoadModel roadWithThisCar, Vehicle carBefore) {
         this.roadWithThisCar = roadWithThisCar;
         this.positionX = roadWithThisCar.getSpawnPoint().get("x");
         this.positionY = roadWithThisCar.getSpawnPoint().get("y") - 18;
         this.carRectangle = createCarRectangle();
+        this.carBefore = carBefore;
     }
 
     public CarController.CarModels getCarEnum() {

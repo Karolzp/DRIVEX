@@ -7,8 +7,8 @@ import static Vehicle.CarController.CarModels.POLICE;
 public class PoliceCarModel extends Vehicle {
 
     /* constructor */
-    public PoliceCarModel(RoadModel roadWithThisCar) {
-        super(roadWithThisCar);
+    public PoliceCarModel(RoadModel roadWithThisCar, Vehicle carBefore) {
+        super(roadWithThisCar, carBefore);
         speedMax = 0.2;
         speedActual = speedMax;
         carEnum = POLICE;
