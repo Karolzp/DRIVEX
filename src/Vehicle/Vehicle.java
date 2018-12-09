@@ -89,9 +89,6 @@ public abstract class Vehicle {
                     speedActual = speedActual + acceleration;
                 }
             }
-//            else if(speedActual == nextCar.speedActual && (Math.abs(positionX - nextCar.positionX) <= widthOfCar*1)){
-//                speedActual = speedActual - 0.15;
-//            }
 
         }
 

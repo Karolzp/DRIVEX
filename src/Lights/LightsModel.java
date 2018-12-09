@@ -13,6 +13,7 @@ public class LightsModel {
     private Circle redLight;
     private Circle greenLight;
     private int rotation;
+    private LightsView lightView;
 
 
 
@@ -23,6 +24,15 @@ public class LightsModel {
         createTrafficLightBox();
         createTrafficLightsCircles();
     }
+
+    public LightsView getLightView() {
+        return lightView;
+    }
+
+    public void setLightView(LightsView lightView) {
+        this.lightView = lightView;
+    }
+
     public Rectangle getTrafficLightsBox() {
         return trafficLightsBox;
     }

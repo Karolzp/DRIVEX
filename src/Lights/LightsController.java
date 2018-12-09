@@ -2,15 +2,14 @@ package Lights;
 
 import Road.RoadModel;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class LightsController {
     List<LightsModel> listOfLights = new ArrayList();
 
     public LightsController(List<RoadModel> listOfRoadModel) {
         createTrafficLights(listOfRoadModel);
+        changeColorOfLights();
     }
 
     private void createTrafficLightsModels(HashMap<String,Integer> positionOfTrafficLightBox, int rotation, RoadModel roadModel){
@@ -20,8 +19,10 @@ public class LightsController {
     }
 
     private void createTrafficLightsView(){
-        LightsView lightsView = new LightsView();
+
         for (int i = 0; i < listOfLights.size(); i++){
+            LightsView lightsView = new LightsView();
+            listOfLights.get(i).setLightView(lightsView);
             lightsView.setGraphicalRepresentationOfTrafficLight(listOfLights.get(i).getTrafficLightsBox(),listOfLights.get(i).getRedLight(),listOfLights.get(i).getGreenLight(), listOfLights.get(i).getRotation());
         }
     }
@@ -46,10 +47,30 @@ public class LightsController {
             downLights.put("h", height);
             downLights.put("w", width);
 
-            listOfRoadModel.get(i);
             createTrafficLightsModels(downLights,rotation, listOfRoadModel.get(i));
         }
 
         createTrafficLightsView();
+    }
+    public void changeColorOfLights(){
+        Timer timer = new Timer();
+
+        timer.schedule( new TimerTask() {
+            public void run() {
+                for (int i = 0; i < listOfLights.size(); i++){
+                    listOfLights.get(i).getLightView().setGreenLight();
+                    listOfLights.get(i).setGreen(true);
+                }
+            }
+        }, 0, 6000);
+
+        timer.schedule( new TimerTask() {
+            public void run() {
+                for (int i = 0; i < listOfLights.size(); i++){
+                    listOfLights.get(i).getLightView().setRedLight();
+                    listOfLights.get(i).setGreen(false);
+                }
+            }
+        }, 3000, 6000);
     }
 }

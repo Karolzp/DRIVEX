@@ -10,9 +10,12 @@ import sample.Controller;
 public class LightsView {
     private final Color GREEN = Color.DARKGREEN;
     private final Color RED = Color.DARKRED;
+    private final Color brightGREEN = Color.LAWNGREEN;
+    private final Color brightRED = Color.RED;
     private final Color TAFFICLIGHTSBOX = Color.GRAY;
     private Circle redLight;
     private Circle greenLight;
+
 
     public Color getGREEN() {
         return GREEN;
@@ -40,6 +43,15 @@ public class LightsView {
         box.setRotate(rotation);
 
         Controller.StaticMainStage.getChildren().add(box);
+    }
+
+    public void setGreenLight(){
+        this.greenLight.setFill(brightGREEN);
+        this.redLight.setFill(RED);
+    }
+    public void setRedLight(){
+        this.greenLight.setFill(GREEN);
+        this.redLight.setFill(brightRED);
     }
 
 
