@@ -13,10 +13,9 @@ import java.util.HashMap;
 
 public class RoadView {
     private final int roadWidth = 40;
-    private String pathToTunnelImage = "Road/RoadResources/tunnel.png";
-    private Image tunnelImage = new Image(pathToTunnelImage);
     private Line graphicalRepresentationOfRoad;
     private final Color ROADCOLOR = Color.DIMGRAY;
+    private String tunnel = "Road/img/tunnel.png";
 
 
     public void setGraphicalRepresentationOfRoad(Line graphicalRepresentationOfRoad, HashMap<String, Integer> trafficLightStopPoint) {
@@ -27,35 +26,32 @@ public class RoadView {
         stopLine.setStroke(Color.WHITE);
         stopLine.setStartX(trafficLightStopPoint.get("x"));
         stopLine.setEndX(trafficLightStopPoint.get("x"));
-        stopLine.setStartY(trafficLightStopPoint.get("y")-20);
-        stopLine.setEndY(trafficLightStopPoint.get("y")+20);
-//        stopLine.setViewOrder(2);
+        stopLine.setStartY(trafficLightStopPoint.get("y") - 20);
+        stopLine.setEndY(trafficLightStopPoint.get("y") + 20);
         Controller.StaticMainStage.getChildren().add(this.graphicalRepresentationOfRoad);
         Controller.StaticMainStage.getChildren().add(stopLine);
-//        setTunnels();
-    }
-
-    private void setTunnels(){
-        ImageView tunnelLeft = new ImageView(tunnelImage);
-        tunnelLeft.setFitHeight(200);
-        tunnelLeft.setPreserveRatio(true);
-        tunnelLeft.setViewOrder(-2);
-        tunnelLeft.setRotate(-30);
-        tunnelLeft.setX(graphicalRepresentationOfRoad.getEndX()- 50);
-        tunnelLeft.setY(graphicalRepresentationOfRoad.getEndY() - 110);
-        if(tunnelLeft.getX() > 500){
-            tunnelLeft.setScaleX(-1);
-            tunnelLeft.setRotate(60);
-            tunnelLeft.setY(graphicalRepresentationOfRoad.getEndY()- 130);
-            tunnelLeft.setX(graphicalRepresentationOfRoad.getEndX()- 100);
-            tunnelLeft.setScaleX(-1);
-
-        }
-        Controller.StaticMainStage.getChildren().add(tunnelLeft);
+        setTunnels();
     }
 
 
     public Line getGraphicalRepresentationOfRoad() {
         return graphicalRepresentationOfRoad;
+    }
+
+
+    private void setTunnels() {
+        ImageView tunnelLeft = new ImageView(new Image(tunnel));
+        tunnelLeft.setFitHeight(140);
+        tunnelLeft.setScaleX(-1);
+        tunnelLeft.setPreserveRatio(true);
+        tunnelLeft.setViewOrder(-2);
+        tunnelLeft.setX(graphicalRepresentationOfRoad.getEndX() - 31);
+        tunnelLeft.setY(graphicalRepresentationOfRoad.getEndY() - 50);
+        if (tunnelLeft.getX() > 500) {
+            tunnelLeft.setScaleX(1);
+            tunnelLeft.setY(graphicalRepresentationOfRoad.getEndY() - 93);
+            tunnelLeft.setX(graphicalRepresentationOfRoad.getEndX() - 70);
+        }
+        Controller.StaticMainStage.getChildren().add(tunnelLeft);
     }
 }
