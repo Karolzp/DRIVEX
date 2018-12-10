@@ -52,7 +52,7 @@ public class RoadController {
     public void createRoadView(){
       RoadView roadView = new RoadView();
         for (int i = 0; i < listOfRoadModel.size(); i++){
-           roadView.setGraphicalRepresentationOfRoad(listOfRoadModel.get(i).getRoadLine());
+           roadView.setGraphicalRepresentationOfRoad(listOfRoadModel.get(i).getRoadLine(),listOfRoadModel.get(i).getTrafficLightStopPoint());
            this.listOfGraphicalRepresentationOfRoad.add(roadView.getGraphicalRepresentationOfRoad());
         }
     }

@@ -62,7 +62,7 @@ public class LightsController {
                     listOfLights.get(i).setGreen(true);
                 }
             }
-        }, 0, 6000);
+        }, 0, 10000);
 
         timer.schedule( new TimerTask() {
             public void run() {
@@ -71,6 +71,6 @@ public class LightsController {
                     listOfLights.get(i).setGreen(false);
                 }
             }
-        }, 3000, 6000);
+        }, 5000, 10000);
     }
 }

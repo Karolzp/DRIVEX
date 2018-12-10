@@ -10,7 +10,7 @@ public class PoliceCarModel extends Vehicle {
     public PoliceCarModel(RoadModel roadWithThisCar, Vehicle carBefore) {
         super(roadWithThisCar, carBefore);
         speedMax = 0.2;
-        acceleration = 0.003;
+        acceleration = 0.03;
         breakAcceleration = 0.15;
         speedActual = speedMax;
         carEnum = POLICE;

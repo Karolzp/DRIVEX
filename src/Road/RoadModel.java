@@ -62,6 +62,10 @@ public class RoadModel {
         this.trafficlights = trafficlight;
     }
 
+    public LightsModel getTrafficlights() {
+        return trafficlights;
+    }
+
     /**
      creates roadLine. Starting point is spawnPoint X and Y. Ending point is endPoint X and Y.
      * @param spawnPoint

@@ -10,7 +10,7 @@ public class TruckCarModel extends Vehicle {
     public TruckCarModel(RoadModel roadWithThisCar, Vehicle carBefore) {
         super(roadWithThisCar, carBefore);
         speedMax = 0.1;
-        acceleration = 0.002;
+        acceleration = 0.02;
         breakAcceleration = 0.1;
         speedActual = speedMax;
         carEnum = TRUCK;
