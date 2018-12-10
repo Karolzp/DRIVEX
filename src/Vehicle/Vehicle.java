@@ -77,7 +77,7 @@ public abstract class Vehicle {
 
     public void calculateActualSpeed(Vehicle nextCar, double trafficLightsStopPointX) {
         if (carBefore != null) {
-            if(Math.abs(positionX - trafficLightsStopPointX) < 1) {
+            if(Math.abs(positionX - trafficLightsStopPointX) - widthOfCar*0.5 < 0.9) {
                 beAtTrafficLights = true;
             }
             if (!roadWithThisCar.getTrafficlights().isGreen() && !beAtTrafficLights && Math.abs(positionX - trafficLightsStopPointX) - widthOfCar*0.5 < 1) {
@@ -102,9 +102,8 @@ public abstract class Vehicle {
                 }
             }
         } else if (nextCar == null) {
-            if (Math.abs(positionX - trafficLightsStopPointX) < 1) {
+            if (Math.abs(positionX - trafficLightsStopPointX) - widthOfCar*0.5 < 0.9) {
                 beAtTrafficLights = true;
-                System.out.println("yep");
             }
             if (!roadWithThisCar.getTrafficlights().isGreen() && !beAtTrafficLights && Math.abs(positionX - trafficLightsStopPointX) - widthOfCar*0.5 < 1) {
                 speedActual = 0;
