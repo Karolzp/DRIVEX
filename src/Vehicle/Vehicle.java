@@ -16,15 +16,15 @@ public abstract class Vehicle {
     protected double widthOfCar = 35;
     protected double heightOfCar = 35;
     protected Rectangle carRectangle;
-    protected Vehicle carBefore;
+    protected Vehicle nextCar;
     protected boolean beAtTrafficLights = false;
 
-    public Vehicle(RoadModel roadWithThisCar, Vehicle carBefore) {
+    public Vehicle(RoadModel roadWithThisCar, Vehicle nextCar) {
         this.roadWithThisCar = roadWithThisCar;
         this.positionX = roadWithThisCar.getSpawnPoint().get("x") - 17.5;
         this.positionY = roadWithThisCar.getSpawnPoint().get("y") - 17.5;
         this.carRectangle = createCarRectangle();
-        this.carBefore = carBefore;
+        this.nextCar = nextCar;
     }
 
     public CarController.CarModels getCarEnum() {
@@ -75,56 +75,62 @@ public abstract class Vehicle {
         return newRectangle;
     }
 
-    public void calculateActualSpeed(Vehicle nextCar, double trafficLightsStopPointX) {
-        if (carBefore != null) {
-            if(Math.abs(positionX - trafficLightsStopPointX) - widthOfCar*0.5 < 1) {
-                beAtTrafficLights = true;
-            }
-            if (!roadWithThisCar.getTrafficlights().isGreen() && !beAtTrafficLights && Math.abs(positionX - trafficLightsStopPointX) - widthOfCar*0.5 < 2) {
-                speedActual = 0;
-            }
-            else if (!roadWithThisCar.getTrafficlights().isGreen() && nextCar.beAtTrafficLights && !beAtTrafficLights && Math.abs(positionX - trafficLightsStopPointX) - widthOfCar*0.5 < speedMax * 220){
-                speedActual = speedActual - (speedActual / (10 * (Math.abs(positionX - trafficLightsStopPointX))));
-            }
-            else if (speedActual > nextCar.speedActual) {
-                if ((Math.abs(positionX - nextCar.positionX) <= widthOfCar * 1.2)) {
-                    speedActual = nextCar.speedActual;
-                } else if ((Math.abs(positionX - nextCar.positionX) - widthOfCar) * (speedActual - nextCar.speedActual) < (speedActual - nextCar.speedActual) * speedMax * 220) {
-                    if(speedActual > 0)
-                        speedActual = speedActual - ((speedActual - nextCar.speedActual) / (10 * (Math.abs(positionX - nextCar.positionX)) + widthOfCar / 2));
-                }else if((Math.abs(positionX - nextCar.positionX) - widthOfCar) * (speedActual - nextCar.speedActual) > (speedActual - nextCar.speedActual) * speedMax * 220){
-                    if (speedActual < speedMax) {
-                        speedActual = speedActual + acceleration;
-                    }
-                }
-//            }else if (!roadWithThisCar.getTrafficlights().isGreen()){
+    public void calculateSpeedForFirstCar(double trafficLightsStopPointX){
+        if (Math.abs(positionX - trafficLightsStopPointX) - widthOfCar*0.5 < 1) {
+            beAtTrafficLights = true;
+        }
+        if (!roadWithThisCar.getTrafficlights().isGreen() && !beAtTrafficLights && Math.abs(positionX - trafficLightsStopPointX) - widthOfCar*0.5 < 2) {
+            speedActual = 0;
+        } else if (!roadWithThisCar.getTrafficlights().isGreen() && !beAtTrafficLights && Math.abs(positionX - trafficLightsStopPointX) - widthOfCar*0.5 < speedMax * 220) {
+            if(speedActual > 0)
+                speedActual = speedActual - (speedActual / (10 * (Math.abs(positionX - trafficLightsStopPointX) - widthOfCar*0.5)));
 
+        } else if (roadWithThisCar.getTrafficlights().isGreen()) {
+            if (speedActual < speedMax ) {
+                speedActual = speedActual + acceleration;
             }
-            else if (speedActual < nextCar.speedActual && (Math.abs(positionX - nextCar.positionX) > widthOfCar * 1.2)) {
-                if (speedActual < speedMax) {
-                    speedActual = speedActual + acceleration;
-                }
-            }
-            else if((Math.abs(positionX - nextCar.positionX) - widthOfCar) * (speedActual - nextCar.speedActual) > (speedMax - nextCar.speedActual) * speedMax * 220){
-                if (speedActual < speedMax) {
-                    speedActual = speedActual + acceleration;
-                }
-            }
-        } else if (nextCar == null) {
-            if (Math.abs(positionX - trafficLightsStopPointX) - widthOfCar*0.5 < 1) {
-                beAtTrafficLights = true;
-            }
-            if (!roadWithThisCar.getTrafficlights().isGreen() && !beAtTrafficLights && Math.abs(positionX - trafficLightsStopPointX) - widthOfCar*0.5 < 2) {
-                speedActual = 0;
-            } else if (!roadWithThisCar.getTrafficlights().isGreen() && !beAtTrafficLights && Math.abs(positionX - trafficLightsStopPointX) - widthOfCar*0.5 < speedMax * 220) {
+        }
+    }
+
+    public void calculateSpeedForOtherCars(double trafficLightsStopPointX){
+        if(Math.abs(positionX - trafficLightsStopPointX) - widthOfCar*0.5 < 1) {
+            beAtTrafficLights = true;
+        }
+        if (!roadWithThisCar.getTrafficlights().isGreen() && !beAtTrafficLights && Math.abs(positionX - trafficLightsStopPointX) - widthOfCar*0.5 < 2) {
+            speedActual = 0;
+        }
+        else if (!roadWithThisCar.getTrafficlights().isGreen() && nextCar.beAtTrafficLights && !beAtTrafficLights && Math.abs(positionX - trafficLightsStopPointX) - widthOfCar*0.5 < speedMax * 220){
+            speedActual = speedActual - (speedActual / (10 * (Math.abs(positionX - trafficLightsStopPointX))));
+        }
+        else if (speedActual > nextCar.speedActual) {
+            if ((Math.abs(positionX - nextCar.positionX) <= widthOfCar * 1.2)) {
+                speedActual = nextCar.speedActual;
+            } else if ((Math.abs(positionX - nextCar.positionX) - widthOfCar) * (speedActual - nextCar.speedActual) < (speedActual - nextCar.speedActual) * speedMax * 220) {
                 if(speedActual > 0)
-                    speedActual = speedActual - (speedActual / (10 * (Math.abs(positionX - trafficLightsStopPointX) - widthOfCar*0.5)));
-
-            } else if (roadWithThisCar.getTrafficlights().isGreen()) {
-                if (speedActual < speedMax ) {
+                    speedActual = speedActual - ((speedActual - nextCar.speedActual) / (10 * (Math.abs(positionX - nextCar.positionX)) + widthOfCar / 2));
+            }else if((Math.abs(positionX - nextCar.positionX) - widthOfCar) * (speedActual - nextCar.speedActual) > (speedActual - nextCar.speedActual) * speedMax * 220){
+                if (speedActual < speedMax) {
                     speedActual = speedActual + acceleration;
                 }
             }
+        }
+        else if (speedActual < nextCar.speedActual && (Math.abs(positionX - nextCar.positionX) > widthOfCar * 1.2)) {
+            if (speedActual < speedMax) {
+                speedActual = speedActual + acceleration;
+            }
+        }
+        else if((Math.abs(positionX - nextCar.positionX) - widthOfCar) * (speedActual - nextCar.speedActual) > (speedMax - nextCar.speedActual) * speedMax * 220){
+            if (speedActual < speedMax) {
+                speedActual = speedActual + acceleration;
+            }
+        }
+    }
+
+    public void calculateActualSpeed(double trafficLightsStopPointX) {
+        if (nextCar == null) {
+            calculateSpeedForFirstCar(trafficLightsStopPointX);
+        } else if (nextCar != null) {
+            calculateSpeedForOtherCars(trafficLightsStopPointX);
         }
     }
 
@@ -135,7 +141,7 @@ public abstract class Vehicle {
         int spawnPointX = roadWithThisCar.getSpawnPoint().get("x");
         double trafficLightsStopPointX = roadWithThisCar.getTrafficLightStopPoint().get("x") - 17.5;
 
-        calculateActualSpeed(carBefore, trafficLightsStopPointX);
+        calculateActualSpeed(trafficLightsStopPointX);
 
         if (spawnPointX > endPointX){
             positionX -= speedActual;

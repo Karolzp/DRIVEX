@@ -44,32 +44,32 @@ public class CarController {
     private Vehicle createCarModel() {
 
         RoadModel pickedRoad = pickRoadModel();
-        Vehicle carBefore = pickedRoad.getCarsOnRoad().get(pickedRoad.getCarsOnRoad().size()-1);
+        Vehicle nextCar = pickedRoad.getCarsOnRoad().get(pickedRoad.getCarsOnRoad().size()-1);
 
         switch (pickCarModel()) {
             case AUDI:
-                Vehicle audiCarModel = new AudiCarModel(pickedRoad, carBefore);
+                Vehicle audiCarModel = new AudiCarModel(pickedRoad, nextCar);
                 audiCarModel.getRoadWithThisCar().addCarToListOfCarsOnRoad(audiCarModel);
 
                 return audiCarModel;
             case BLACK_VIPER:
-                Vehicle blackViperCarModel = new BlackViperCarModel(pickedRoad, carBefore);
+                Vehicle blackViperCarModel = new BlackViperCarModel(pickedRoad, nextCar);
                 blackViperCarModel.getRoadWithThisCar().addCarToListOfCarsOnRoad(blackViperCarModel);
                 return blackViperCarModel;
             case TRUCK:
-                Vehicle truckCarModel = new TruckCarModel(pickedRoad, carBefore);
+                Vehicle truckCarModel = new TruckCarModel(pickedRoad, nextCar);
                 truckCarModel.getRoadWithThisCar().addCarToListOfCarsOnRoad(truckCarModel);
                 return truckCarModel;
             case POLICE:
-                Vehicle policeCarModel = new PoliceCarModel(pickedRoad, carBefore);
+                Vehicle policeCarModel = new PoliceCarModel(pickedRoad, nextCar);
                 policeCarModel.getRoadWithThisCar().addCarToListOfCarsOnRoad(policeCarModel);
                 return policeCarModel;
             case TAXI:
-                Vehicle taxiCarModel = new TaxiCarModel(pickedRoad, carBefore);
+                Vehicle taxiCarModel = new TaxiCarModel(pickedRoad, nextCar);
                 taxiCarModel.getRoadWithThisCar().addCarToListOfCarsOnRoad(taxiCarModel);
                 return taxiCarModel;
             default:
-                Vehicle defaultAudi = new AudiCarModel(pickedRoad, carBefore);
+                Vehicle defaultAudi = new AudiCarModel(pickedRoad, nextCar);
                 defaultAudi.getRoadWithThisCar().addCarToListOfCarsOnRoad(defaultAudi);
                 return defaultAudi;
         }
