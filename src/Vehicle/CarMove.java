@@ -17,7 +17,10 @@ public class CarMove extends AnimationTimer {
         double newPosition = carModel.getPositionX();
         if (carModel.checkIfReachedTheEnd()) {
             this.stop();
-                    }
+            carModel.removeCarFromList();
+            carView.removeCarFromScene();
+            return;
+        }
         carView.changeCarLayout(newPosition);
     }
 

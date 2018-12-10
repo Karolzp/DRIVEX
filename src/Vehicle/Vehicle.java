@@ -149,4 +149,8 @@ public abstract class Vehicle {
             positionX += speedActual;
         }
     }
+
+    protected void removeCarFromList(){
+        this.getRoadWithThisCar().getCarsOnRoad().remove(this);
+    }
 }

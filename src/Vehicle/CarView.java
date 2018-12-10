@@ -84,6 +84,10 @@ public class CarView {
         this.graphicalRepresentationOfCar.setX(newPosition);
     }
 
+    public void removeCarFromScene(){
+        Controller.StaticMainStage.getChildren().remove(graphicalRepresentationOfCar);
+    }
+
     public CarView getGraphicalRepresentationOfCar() {
         return this;
     }
