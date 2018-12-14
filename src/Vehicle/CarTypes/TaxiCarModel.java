@@ -1,6 +1,7 @@
-package Vehicle;
+package Vehicle.CarTypes;
 
 import Road.RoadModel;
+import Vehicle.Vehicle;
 
 import static Vehicle.CarController.CarModels.TAXI;
 

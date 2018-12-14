@@ -10,7 +10,7 @@ import java.util.List;
 
 public class RoadModel {
     private String roadName;
-    private List <Vehicle> carsOnRoad = new ArrayList<Vehicle>();
+    private List<Vehicle> carsOnRoad = new ArrayList<Vehicle>();
     private HashMap<String, Integer> spawnPoint;
     private HashMap<String, Integer> endPoint;
     private HashMap<String, Integer> trafficLightStopPoint;
@@ -18,7 +18,7 @@ public class RoadModel {
     private LightsModel trafficlights;
 
 
-/* constructor */
+    /* constructor */
     public RoadModel(HashMap<String, Integer> spawnPoint, HashMap<String, Integer> endPoint, HashMap<String, Integer> trafficLightStopPoint, String roadName) {
         this.roadName = roadName;
         this.spawnPoint = spawnPoint;
@@ -67,11 +67,12 @@ public class RoadModel {
     }
 
     /**
-     creates roadLine. Starting point is spawnPoint X and Y. Ending point is endPoint X and Y.
+     * creates roadLine. Starting point is spawnPoint X and Y. Ending point is endPoint X and Y.
+     *
      * @param spawnPoint
      * @param endPoint
      */
-    private void createRoadLine (HashMap<String, Integer> spawnPoint, HashMap<String, Integer> endPoint) {
+    private void createRoadLine(HashMap<String, Integer> spawnPoint, HashMap<String, Integer> endPoint) {
         this.roadLine = new Line();
         roadLine.setStartX(spawnPoint.get("x"));
         roadLine.setStartY(spawnPoint.get("y"));

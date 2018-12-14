@@ -88,8 +88,4 @@ public class CarView {
         Controller.StaticMainStage.getChildren().remove(graphicalRepresentationOfCar);
     }
 
-    public CarView getGraphicalRepresentationOfCar() {
-        return this;
-    }
-
 }

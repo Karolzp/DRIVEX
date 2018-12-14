@@ -1,6 +1,7 @@
 package Vehicle;
 
 import Road.RoadModel;
+import Vehicle.CarTypes.*;
 import javafx.application.Platform;
 
 import java.util.*;
@@ -8,7 +9,7 @@ import java.util.concurrent.*;
 
 public class CarController {
 
-    private Random rand = new Random();
+    private static final Random rand = new Random();
 
     private List<RoadModel> listOfRoads;
 
