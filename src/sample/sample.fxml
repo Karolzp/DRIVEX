@@ -13,7 +13,7 @@
       </ImageView>
       <ImageView fx:id="plane" fitHeight="37.0" fitWidth="43.0" layoutX="903.0" layoutY="553.0" pickOnBounds="true" preserveRatio="true" rotate="-135.0">
          <image>
-            <Image url="@img/airport/planeBig.png" />
+            <Image url="@img/airport/planeBigYaro.png" />
          </image>
       </ImageView>
    </children>
