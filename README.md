@@ -13,6 +13,7 @@ The goal was to practice:
 * JavaFx
 
 ## Team members:
+* https://github.com/Karolzp
 * https://github.com/elYaro
 * https://github.com/JanBartoszek
 
