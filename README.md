@@ -1,6 +1,7 @@
 # DRIVEX
 
-Simple app that simulates traffic without iteraction with user. There is one road with traffic lights and many randomly generated cars with different speed. Like in real world cars are stopping before traffic lights. There is also airport with airplane taking off (the last screenshot).
+## About App:
+DRIVEX is application that simulates traffic without iteraction with user. There is one road with traffic lights and many randomly generated cars with different speed. Like in real world cars are stopping before traffic lights. There is also airport with airplane taking off (the last screenshot).
 
 ## About project:
 That was team project created during my journey in Codecool (programming school).<br/>
