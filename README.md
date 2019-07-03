@@ -12,6 +12,10 @@ The goal was to practice:
 * Java
 * JavaFx
 
+## Team members:
+* https://github.com/elYaro
+* https://github.com/JanBartoszek
+
 ## Screenshots:
 ![alt text](https://github.com/Karolzp/DRIVEX/blob/master/screenshots/Screenshot%201.png)
 ![alt text](https://github.com/Karolzp/DRIVEX/blob/master/screenshots/Screenshot2.png)
