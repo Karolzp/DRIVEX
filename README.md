@@ -5,9 +5,11 @@ DRIVEX is application that simulates traffic without iteraction with user. There
 
 ## About project:
 That was team project created during my journey in Codecool (programming school).<br/>
-The goal was to practice:
-* OOP ( especially creating and managing threads ) 
-* MVC (Model, View, Controller) design pattern.
+The goal was to:
+* practice OOP concept in Java 
+* learn creating and managing threads
+* practice MVC (Model, View, Controller) design pattern
+* use JavaFx to show results of our app
 
 ## Used technology:
 * Java
