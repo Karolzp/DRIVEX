@@ -21,7 +21,7 @@ That was team project created during my journey in Codecool (programming school)
 * https://github.com/JanBartoszek
 
 ## Video:
-You can watch simulation here: https://youtu.be/j_8Z1HEp-Ao.
+You can watch how simulation works here: https://youtu.be/j_8Z1HEp-Ao.
 
 ## Screenshots:
 ![alt text](https://github.com/Karolzp/DRIVEX/blob/master/screenshots/Screenshot%201.png)
